@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:tx="http://www.springframework.org/schema/tx"  
+    xmlns:context="http://www.springframework.org/schema/context"    
+    xmlns:mvc="http://www.springframework.org/schema/mvc"    
+    xsi:schemaLocation="http://www.springframework.org/schema/beans   
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd   
+    http://www.springframework.org/schema/tx   
+    http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+    http://www.springframework.org/schema/context  
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+    http://www.springframework.org/schema/mvc  
+    http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+    <context:annotation-config />
+ 	<!-- 自动扫描的包名 -->  
+    <context:component-scan base-package="com.hy.wxserver.web"></context:component-scan>  
+      
+    <!-- 默认的注解映射的支持 -->  
+<!--    <mvc:annotation-driven />  -->
+      
+     <!-- 数据源 -->
+     <bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="configLocation" value="classpath:hibernate.cfg.xml">
+		</property>
+	</bean>
+	
+	<bean id="hibernateTemplete" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<bean id="messageDao" class="com.hy.wxserver.web.dao.MessageDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplete"></property>
+	</bean>
+	
+	<bean id="reqMessageDao" class="com.hy.wxserver.web.dao.ReqMessageDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplete"></property>
+	</bean>
+	
+	<bean id="serviceMenuDao" class="com.hy.wxserver.web.dao.ServiceMenuDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplete"></property>
+	</bean>
+	
+	<bean name="customerService" class="com.hy.wxserver.web.service.CustomerService">
+		<property name="messageDao" ref="messageDao"></property>
+		<property name="reqMessageDao" ref="reqMessageDao"></property>
+		<property name="serviceMenuDao" ref="serviceMenuDao"></property>
+	</bean>
+	
+	<bean
+	class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+	<description>
+		这点是必需的还是非必需的呢？
+		如果定义了 DefaultAnnotationHandlerMapping，它就可以将请求来的 url 和被注解了 @RequesMapping
+		的指进行匹配。当然，说这句话的前提是定义 DefaultAnnotationHandlerMapping 的优先级比定义了其它的
+		HandlerMapping 的优先级要高(如果定义了其它的话)。
+		如果没有定义 DefaultAnnotationHandlerMapping，并不代表不能映射到相应的 handler 上。因为如果你定义了其它的
+		HandlerMapping，请求过来的 url 和注解了的 @RequestMapping 里的值正好能匹配上，那么没有
+		DefaultAnnotationHandlerMapping，@Controller 一样可以如鱼得水的被捕获到。
+		当然，如果你要使用基于注解的 @Controller，最好还是老老实实地注册
+		DefaultAnnotationHandlerMapping。  
+	  </description>
+</bean>
+	<bean
+		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<description>
+			和上面的 HandlerMapping 一样，是必需的还是非必需的呢？
+			Spring MVC 中，如果我们没有注册任何 HandlerAdaptor 到容器中，注意，我说的是任何。那么 DispatcherServlet
+			将启用后备的几个默认使用的 HandlerAdaptor 实现，包括：
+			org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter
+			org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter
+			org.springframework.web.servlet.mvc.AnnotationMethodHandlerAdaptor
+
+			看见没，如果我们没有注册任何的 HandlerAdaptor，框架会准备 AnnotationMethodHandlerAdaptor
+			的。可是由于某些原因，我们需要为某些 HandlerAdaptoer 进行一些定制化，即在容器中注册了某个
+			HandlerAdaptor，那么很抱歉，框架只会启用你注册的那个，而框架本身准备的不会被启用。所以，你一旦为某个
+			HandlerMapping 进行了定制化，请别忘了把其它的 HandlerAdaptor
+			也注册进来，即便这些不需要定制化。否则的话，后果你是可以想象的。当然，除非你确保你真的只需要那一个你注册进容器的
+			HandlerAdaptor，否则，我再啰嗦一遍，别忘了把其它的 HandlerAdaptor 也注册进来。  
+  </description>
+	</bean>
+      
+    <!-- 视图解释类 -->  
+   <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+       <property name="prefix" value="/WEB-INF/page/"/> 
+       <property name="suffix" value=".jsp"/><!-- 可为空,方便实现自已的依据扩展名来选择视图解释类的逻辑 -->   
+       <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" /> 
+   </bean> 
+      
+    <!-- 拦截器 -->  
+<!--    <mvc:interceptors>  -->
+<!--        <bean class="com.core.mvc.MyInteceptor" />  -->
+<!--    </mvc:interceptors>       -->
+      
+    <!-- 对静态资源文件的访问  方案一 （二选一） -->  
+<!--    <mvc:default-servlet-handler/>  -->
+      
+    <!-- 对静态资源文件的访问  方案二 （二选一）-->  
+<!--    <mvc:resources mapping="/images/**" location="/images/" cache-period="31556926"/>  -->
+<!--    <mvc:resources mapping="/js/**" location="/js/" cache-period="31556926"/>  -->
+<!--    <mvc:resources mapping="/css/**" location="/css/" cache-period="31556926"/>
+-->
+
+</beans>

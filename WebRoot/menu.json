@@ -1,0 +1,39 @@
+{
+        "button": [
+            {
+                "type": "click", 
+                "name": "今日十张图", 
+                "key": "V1001_TODAY_PIC", 
+                "sub_button": [ ]
+            }, 
+            {
+                "type": "click", 
+                "name": "TOP10歌曲", 
+                "key": "V1001_TODAY_MUSIC", 
+                "sub_button": [ ]
+            }, 
+            {
+                "name": "菜单", 
+                "sub_button": [
+                    {
+                        "type": "view", 
+                        "name": "QQ空间", 
+                        "url": "http://user.qzone.qq.com/386184368/", 
+                        "sub_button": [ ]
+                    }, 
+                    {
+                        "type": "view", 
+                        "name": "我的微博", 
+                        "url": "http://t.qq.com/heshaohua159632", 
+                        "sub_button": [ ]
+                    }, 
+                    {
+                        "type": "click", 
+                        "name": "赞一下我们", 
+                        "key": "V1001_GOOD", 
+                        "sub_button": [ ]
+                    }
+                ]
+            }
+        ]
+    }

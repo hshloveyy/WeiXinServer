@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="WeiXinServer"
+  id="myeclipse.1395975492828"
+  context-root="/WeiXinServer"
+  j2ee-spec="5.0"
+  archive="WeiXinServer.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
