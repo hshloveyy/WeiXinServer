@@ -2,6 +2,9 @@ package com.hy.wxserver.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.hy.wxserver.web.pojo.Message;
 
 /**
  * 核心请求分发控制器
@@ -10,11 +13,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Controller
+@RequestMapping("test")
 public class TestController {
 	
-	@RequestMapping(value = "/test")
-	public String test() {
+	@RequestMapping(value = "jsp")
+	public String jsp() {
 		return "index";
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "json")
+	public String json() {
+		return new Message().toString();
+	}
 }

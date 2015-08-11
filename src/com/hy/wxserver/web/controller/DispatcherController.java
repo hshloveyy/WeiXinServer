@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hy.wxserver.message.response.RespBaseMessage;
@@ -25,7 +24,8 @@ import com.hy.wxserver.web.service.ICustomerService;
  * @version 创建时间：2014-4-1 下午05:20:26 
  */
 
-@Controller("service")
+@Controller
+@RequestMapping("service")
 public class DispatcherController {
 	
 	private Log log = LogFactory.getLog(DispatcherController.class);
