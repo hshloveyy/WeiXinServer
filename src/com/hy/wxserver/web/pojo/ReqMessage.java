@@ -211,4 +211,45 @@ public class ReqMessage implements java.io.Serializable {
 		this.url = url;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ReqMessage : {\n\t\"msgId\" : \"");
+		builder.append(msgId);
+		builder.append("\", \n\t\"toUserName\" : \"");
+		builder.append(toUserName);
+		builder.append("\", \n\t\"fromUserName\" : \"");
+		builder.append(fromUserName);
+		builder.append("\", \n\t\"createTime\" : \"");
+		builder.append(createTime);
+		builder.append("\", \n\t\"msgType\" : \"");
+		builder.append(msgType);
+		builder.append("\", \n\t\"content\" : \"");
+		builder.append(content);
+		builder.append("\", \n\t\"picUrl\" : \"");
+		builder.append(picUrl);
+		builder.append("\", \n\t\"mediaId\" : \"");
+		builder.append(mediaId);
+		builder.append("\", \n\t\"format\" : \"");
+		builder.append(format);
+		builder.append("\", \n\t\"thumbMediaId\" : \"");
+		builder.append(thumbMediaId);
+		builder.append("\", \n\t\"locationX\" : \"");
+		builder.append(locationX);
+		builder.append("\", \n\t\"locationY\" : \"");
+		builder.append(locationY);
+		builder.append("\", \n\t\"scale\" : \"");
+		builder.append(scale);
+		builder.append("\", \n\t\"label\" : \"");
+		builder.append(label);
+		builder.append("\", \n\t\"title\" : \"");
+		builder.append(title);
+		builder.append("\", \n\t\"description\" : \"");
+		builder.append(description);
+		builder.append("\", \n\t\"url\" : \"");
+		builder.append(url);
+		builder.append("\"\n}");
+		return builder.toString();
+	}
+
 }

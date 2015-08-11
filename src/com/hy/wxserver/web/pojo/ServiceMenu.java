@@ -88,4 +88,23 @@ public class ServiceMenu implements java.io.Serializable {
 		this.msgId = msgId;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("ServiceMenu : {\n\t\"id\" : \"");
+		builder.append(id);
+		builder.append("\", \n\t\"code\" : \"");
+		builder.append(code);
+		builder.append("\", \n\t\"codeDesc\" : \"");
+		builder.append(codeDesc);
+		builder.append("\", \n\t\"createTime\" : \"");
+		builder.append(createTime);
+		builder.append("\", \n\t\"order\" : \"");
+		builder.append(order);
+		builder.append("\", \n\t\"msgId\" : \"");
+		builder.append(msgId);
+		builder.append("\"\n}");
+		return builder.toString();
+	}
+
 }

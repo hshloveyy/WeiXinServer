@@ -14,10 +14,10 @@ public class Message implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 7384473768645343917L;
-	private Integer msgId;
-	private String msgType;
-	private String msgBody;
-	private Date createTime;
+	private Integer msgId = 21;
+	private String msgType = "r";
+	private String msgBody = "323121";
+	private Date createTime = new Date();
 
 	// Constructors
 
@@ -68,4 +68,20 @@ public class Message implements java.io.Serializable {
 		this.createTime = createTime;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Message : {\n\t\"msgId\" : \"");
+		builder.append(msgId);
+		builder.append("\", \n\t\"msgType\" : \"");
+		builder.append(msgType);
+		builder.append("\", \n\t\"msgBody\" : \"");
+		builder.append(msgBody);
+		builder.append("\", \n\t\"createTime\" : \"");
+		builder.append(createTime);
+		builder.append("\"\n}");
+		return builder.toString();
+	}
+
+	
 }
