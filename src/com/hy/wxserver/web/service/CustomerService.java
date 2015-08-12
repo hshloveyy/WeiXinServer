@@ -109,6 +109,9 @@ public class CustomerService implements ICustomerService {
 			}else if(msgType.equals(MessageUtils.REQ_MESSAGE_TYPE_VIDEO)){	//视频消息
 				textMessage.setContent("您发送的是视频消息！");
 				message = textMessage;
+			}else if(msgType.equals(MessageUtils.REQ_MESSAGE_TYPE_SHORTVIDEO)){	//视频消息
+				textMessage.setContent("您发送的是小视频消息！");
+				message = textMessage;
 			}else if (msgType.equals(MessageUtils.REQ_MESSAGE_TYPE_EVENT)) { // 事件推送
 				// 事件类型
 				String eventType = requestMap.get("Event");

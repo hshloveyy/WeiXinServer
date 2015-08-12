@@ -91,6 +91,11 @@ public class MessageUtils {
      */
     public static final String REQ_MESSAGE_TYPE_VIDEO = "video";
     
+    /**
+     * 请求消息类型：视频
+     */
+    public static final String REQ_MESSAGE_TYPE_SHORTVIDEO = "shortvideo";
+    
     /** 
      * 请求消息类型：推送 
      */  
@@ -121,6 +126,7 @@ public class MessageUtils {
 	 * @return
 	 * @throws Exception
 	 */
+	@SuppressWarnings("unchecked")
 	public static Map<String, String> parseXml(HttpServletRequest request) throws Exception {  
 	    // 将解析结果存储在HashMap中  
 	    Map<String, String> map = new HashMap<String, String>();  
@@ -187,7 +193,8 @@ public class MessageUtils {
      * @param message
      * @return
      */
-    private static String parseEntity(Message message){
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+	private static String parseEntity(Message message){
     	//创建dom
     	Document doc = DocumentHelper.createDocument();
     	//创建root元素
