@@ -73,6 +73,7 @@ public class ServiceMenuDAO extends HibernateDaoSupport implements IServiceMenuD
 	/* (non-Javadoc)
 	 * @see com.hy.wxserver.web.dao.IServiceMenuDao#findAll()
 	 */
+	@SuppressWarnings("unchecked")
 	public List<ServiceMenu> findAll() {
 		log.debug("finding all ServiceMenu instances");
 		try {
