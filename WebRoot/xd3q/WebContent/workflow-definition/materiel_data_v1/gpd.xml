@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="materiel_data_v1" width="1028" height="585">
+  <node name="物料主数据新增或修改过流程" x="338" y="56" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="信息中心维护物料信息" x="338" y="190" width="181" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="32" h1="75" w2="29" h2="-77"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-120" h1="-50" w2="123" h2="-50"/>
+    </edge>
+  </node>
+  <node name="业务人员确认物料主数据" x="302" y="342" width="171" height="36">
+    <edge>
+      <label x="-46" y="-20"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-30" h1="-77" w2="-27" h2="75"/>
+    </edge>
+  </node>
+  <node name="修改申请表" x="95" y="190" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-2" h1="-64" w2="-245" h2="-64"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="更新为有效" x="572" y="339" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="更新为无效" x="96" y="279" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="结束（有效）" x="546" y="220" width="132" height="36"/>
+  <node name="结束（无效）" x="96" y="344" width="132" height="36"/>
+</root-container>

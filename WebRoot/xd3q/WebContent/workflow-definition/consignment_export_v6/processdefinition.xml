@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="consignment_export_v6">
+
+
+	<start-state name="出口出仓申请">
+		<transition to="部门经理确认" name="提交部门经理审核"></transition>
+	</start-state>
+
+
+	<task-node name="业务人员修改实际出货信息">
+	    <task name="业务人员修改实际出货信息"></task>
+		<transition to="部门经理确认" name="已录入实际出货信息"></transition>
+		<transition to="更新出仓单状态为不通过" name="不提交，作废"></transition>
+	</task-node>
+
+	<task-node name="综合一部仓管员进SAP系统操作进出仓动作">
+	    <task name="综合一部仓管员进SAP系统操作进出仓动作"></task>
+		<transition to="更新出仓单状态为通过" name="已在SAP系统执行相关出入库操作"></transition>
+		<transition to="业务人员修改实际出货信息" name="退回修改"></transition>
+	</task-node>
+
+	<node name="更新出仓单状态为不通过">
+		<action class="com.infolion.sapss.workflow.ship.ConsgmtImportFaileActionHandler" config-type="bean"></action>
+		<transition to="出仓单申请不通过"></transition>
+	</node>
+
+	<node name="更新出仓单状态为通过">
+		<action class="com.infolion.sapss.workflow.ship.ConsgmtImportSucessfulActionHandler" config-type="bean"></action>
+		<transition to="出仓单申请通过"></transition>
+	</node>
+
+	<task-node name="综合一部经理审核">
+	    <task name="综合一部经理审核"></task>
+		<transition to="综合一部仓管员进SAP系统操作进出仓动作" name="同意出仓"></transition>
+		<transition to="业务人员修改实际出货信息" name="单据不符，退回业务更改"></transition>
+	</task-node>
+
+	<task-node name="部门经理确认">
+	    <task name="部门经理确认"></task>
+		<transition to="香港财务会计审核" name="提交财务会计审核"></transition>
+		<transition to="业务人员修改实际出货信息" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="香港财务会计审核">
+	    <task name="香港财务会计审核"></task>
+		<transition to="综合一部经理审核" name="同意发货"></transition>
+		<transition to="业务人员修改实际出货信息" name="退回修改"></transition>
+	</task-node>
+
+
+	<end-state name="出仓单申请通过"></end-state>
+
+	<end-state name="出仓单申请不通过"></end-state>
+
+
+</process-definition>

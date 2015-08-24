@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="import_bill_arrive_LC_DP_DA_v3">
+
+
+	<start-state name="进口到单处理开始">
+		<transition to="信达安贸管部审核" name="确认提交"></transition>
+	</start-state>
+
+
+	<task-node name="进口到单信息修改">
+	    <task name="进口到单信息修改"></task>
+		<transition to="信达安贸管部审核" name="提交"></transition>
+		<transition to="更新到单状态为作废" name="退单或作废"></transition>
+	</task-node>
+
+	<node name="更新到单状态为有效">
+		<action class="com.infolion.sapss.workflow.payment.PickListInfoChangeSucessfulActionHandler" config-type="bean"></action>	
+		<transition to="结束"></transition>
+	</node>
+
+	<node name="更新到单状态为作废">
+		<action class="com.infolion.sapss.workflow.payment.PickListInfoChangeFailureActionHandler" config-type="bean"></action>	
+		<transition to="结束（不接受不符）"></transition>
+	</node>
+
+	<task-node name="股份公司贸管审单">
+	    <task name="股份公司贸管审单"></task>
+		<transition to="业务是否接受不符" name="确认"></transition>
+		<transition to="进口到单信息修改" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="信达安贸管部审核">
+	    <task name="信达安贸管部审核"></task>
+		<transition to="股份公司贸管审单" name="非自有业务"></transition>
+		<transition to="业务是否接受不符" name="自有业务"></transition>
+		<transition to="进口到单信息修改" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="业务是否接受不符">
+	    <task name="业务是否接受不符"></task>
+		<transition to="更新到单状态为有效" name="确认"></transition>
+		<transition to="进口到单信息修改" name="退回"></transition>
+	</task-node>
+
+
+	<end-state name="结束"></end-state>
+
+	<end-state name="结束（不接受不符）"></end-state>
+
+
+</process-definition>

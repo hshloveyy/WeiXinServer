@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process-definition xmlns="urn:jbpm.org:jpdl-3.2"
+	name="storage_protocol_modify_v10">
+	<start-state name="仓储协议变更申请流程">
+		<transition to="部门经理审批"></transition>
+	</start-state>
+	<task-node name="综合部审核">
+		<task name="综合部审核"/>
+		<transition to="成都总经理审核" name="同意"></transition>
+		<transition to="业务修改" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="成都总经理审核">
+		<task name="成都总经理审核"/>
+		<transition to="信息中心修改" name="同意"></transition>
+		<transition to="业务修改" name="退回修改"></transition>
+		<transition to="设置申请不通过" name="不同意"></transition>
+	</task-node>
+
+	<node name="设置申请不通过">
+		<action class="com.infolion.sapss.workflow.storageProtocol.ChangeFailureActionHandler"></action>
+		<transition to="申请不通过"></transition>
+	</node>
+
+	<node name="设置申请通过">
+		<action class="com.infolion.sapss.workflow.storageProtocol.ChangeSuccessActionHandler"></action>
+		<transition to="申请通过"></transition>
+	</node>
+
+	<task-node name="业务修改">
+		<task name="业务修改"/>
+		<transition to="部门经理审批" name="提交部门经理"></transition>
+		<transition to="设置申请不通过" name="作废"></transition>
+	</task-node>
+
+	<task-node name="部门经理审批">
+		<task name="部门经理审批"></task>
+		<transition to="财务部审核" name="同意"></transition>
+		<transition to="业务修改" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="贸管部审核">
+	    <task name="贸管部审核"></task>
+		<transition to="综合部审核" name="同意"></transition>
+		<transition to="业务修改" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="信息中心修改">
+	    <task name="信息中心修改"></task>
+		<transition to="设置申请通过" name="已修改"></transition>
+	</task-node>
+
+	<task-node name="财务部审核">
+	    <task name="财务部审核"></task>
+		<transition to="贸管部审核" name="同意"></transition>
+		<transition to="业务修改" name="退回修改"></transition>
+	</task-node>
+	<end-state name="申请通过"/>
+
+	<end-state name="申请不通过"/>
+</process-definition>

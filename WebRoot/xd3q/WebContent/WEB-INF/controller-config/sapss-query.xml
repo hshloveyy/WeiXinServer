@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="order" value="4" />
+		<!-- 是否登录拦截器，针对每个请求进行过滤 -->
+		<property name="interceptors">
+			<list>
+				<bean
+					class="com.infolion.platform.console.sys.LogonStateInterceptor" />
+			</list>
+		</property>
+		<property name="mappings">
+			<props>
+				<prop key="/masterQueryController.spr">masterQueryController</prop>
+				<prop key="/creditQueryController.spr">creditQueryController</prop>				
+				<prop key="/exportQueryController.spr">exportQueryController</prop>
+				<prop key="/shipQueryController.spr">shipQueryController</prop>				
+				<prop key="/contractQueryController.spr">contractQueryController</prop>				
+				<prop key="/showProcessImgController.spr">showProcessImgController</prop>
+				<prop key="/dictionarySyncController.spr">dictionarySyncController</prop>
+				<prop key="/particularWorkflowController.spr">particularWorkflowController</prop>
+				<prop key="/salesMaterialQueryController.spr">salesMaterialQueryController</prop>
+				<prop key="/outerReportController.spr">outerReportController</prop>
+				<prop key="/sapReportController.spr">sapReportController</prop>
+				<prop key="/homeTradeController.spr">homeTradeController</prop>
+				<prop key="/importController.spr">importController</prop>
+				<prop key="/exportRController.spr">exportRController</prop>
+				 <prop key="/creditHisQueryController.spr">creditHisQueryController</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="masterQueryController"
+		class="com.infolion.sapss.masterQuery.web.MasterQueryController"
+		parent="baseMultiActionControllerXD" />
+	<bean id="creditQueryController"
+		class="com.infolion.sapss.masterQuery.web.CreditQueryController"
+		parent="baseMultiActionControllerXD" />		
+	<bean id="exportQueryController"
+		class="com.infolion.sapss.masterQuery.web.ExportQueryController"
+		parent="baseMultiActionControllerXD" />
+	<bean id="shipQueryController"
+		class="com.infolion.sapss.masterQuery.web.ShipQueryController"
+		parent="baseMultiActionControllerXD" />
+	<bean id="contractQueryController"
+		class="com.infolion.sapss.masterQuery.web.ContractQueryController"
+		parent="baseMultiActionControllerXD" />
+    <bean id="showProcessImgController"
+		class="com.infolion.sapss.common.web.CommonController"
+		parent="baseMultiActionControllerXD" />
+	<bean id="dictionarySyncController"
+		class="com.infolion.sapss.bapi.web.DictionarySyncController"
+		parent="baseMultiActionControllerXD" />
+	<bean id="particularWorkflowController"
+		class="com.infolion.sapss.workflow.particular.controller.ParticularWorkflowController"
+		parent="baseMultiActionControllerXD" />
+	<bean id="salesMaterialQueryController"
+		class="com.infolion.sapss.masterQuery.web.SalesMaterialQueryController"
+		parent="baseMultiActionControllerXD" />		
+	<bean id="outerReportController"
+		class="com.infolion.sapss.masterQuery.web.OuterReportController"
+		parent="baseMultiActionControllerXD" />		
+	<bean id="sapReportController"
+		class="com.infolion.sapss.masterQuery.web.SapReportController"
+		parent="baseMultiActionControllerXD" />		
+	<bean id="homeTradeController"
+		class="com.infolion.sapss.masterQuery.web.HomeTradeController"
+		parent="baseMultiActionControllerXD" />		
+	<bean id="importController"
+		class="com.infolion.sapss.masterQuery.web.ImportController"
+		parent="baseMultiActionControllerXD" />		
+	<bean id="exportRController"
+		class="com.infolion.sapss.masterQuery.web.ExportController"
+		parent="baseMultiActionControllerXD" />	
+	<bean id="creditHisQueryController"         
+        class="com.infolion.sapss.masterQuery.web.CreditHisQueryController"
+        parent="baseMultiActionControllerXD" />	
+</beans>

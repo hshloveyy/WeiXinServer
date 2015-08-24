@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="receipt_v4" width="797" height="638">
+  <node name="入仓申请" x="48" y="76" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="综合部经理审核" x="491" y="76" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="更改入仓申请单" x="376" y="233" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="更新入仓单状态" x="376" y="424" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="综合部仓管员确认" x="368" y="339" width="149" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="部门经理确认" x="243" y="77" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-15" h1="97" w2="-148" h2="-59"/>
+    </edge>
+  </node>
+  <node name="财务会计审核" x="128" y="279" width="132" height="36"/>
+  <node name="更新入仓状态（不通过）" x="573" y="233" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="入仓申请通过" x="361" y="480" width="164" height="36"/>
+  <node name="入仓申请不通过" x="572" y="343" width="132" height="36"/>
+</root-container>

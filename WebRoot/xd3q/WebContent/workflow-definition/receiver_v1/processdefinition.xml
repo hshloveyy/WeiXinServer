@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="receiver_v1">
+
+
+	<start-state name="收款信息确认申请">
+		<transition to="财务会计审核" name="提交财务审核"></transition>
+	</start-state>
+
+
+	<task-node name="财务会计审核">
+	    <task name="财务会计审核"></task>
+		<transition to="更新通过" name="确认无误"></transition>
+		<transition to="修改" name="有误退回修改"></transition>
+	</task-node>
+
+	<task-node name="修改">
+	    <task name="修改"></task>
+		<transition to="财务会计审核" name="提交财务审核"></transition>
+		<transition to="更新不通过" name="作废"></transition>
+	</task-node>
+
+	<node name="更新通过">
+	    <action class="com.infolion.sapss.workflow.receiptMoney.ProcessSucessfulActionHandler" config-type="bean"></action>
+		<transition to="结束（通过）"></transition>
+	</node>
+
+	<node name="更新不通过">
+	    <action class="com.infolion.sapss.workflow.receiptMoney.ProcessFaileActionHandler" config-type="bean"></action>
+		<transition to="结束（不通过）"></transition>
+	</node>
+
+
+	<end-state name="结束（通过）"></end-state>
+
+	<end-state name="结束（不通过）"></end-state>
+
+
+</process-definition>

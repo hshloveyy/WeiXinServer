@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="order" value="4" />
+		<!-- 是否登录拦截器，针对每个请求进行过滤 -->
+		<property name="interceptors">
+			<list>
+				<bean
+					class="com.infolion.platform.console.sys.LogonStateInterceptor" />
+			</list>
+		</property>
+		<property name="mappings">
+			<props>
+				<prop key="/depositRetreatController.spr">depositRetreatController</prop>
+				<prop key="/interestBillController.spr">interestBillController</prop>
+				<prop key="/purchaseBillController.spr">purchaseBillController</prop>
+				<prop key="/assetController.spr">assetController</prop>
+				<prop key="/sqlReportController.spr">sqlReportController</prop>
+			</props>
+		</property>
+	</bean>
+	<!--sample控制器-->
+	<bean id="depositRetreatController"
+		class="com.infolion.sapss.depositRetreat.web.DepositRetreatController"
+		parent="baseMultiActionControllerXD" />
+	<bean id="interestBillController"
+		class="com.infolion.sapss.interestBill.web.InterestBillController"
+		parent="baseMultiActionControllerXD" />
+	<bean id="purchaseBillController"
+		class="com.infolion.sapss.purchaseBill.web.PurchaseBillController"
+		parent="baseMultiActionController" />
+    <bean id="assetController"
+		class="com.infolion.sapss.asset.web.AssetController"
+		parent="baseMultiActionController" />
+	<bean id="sqlReportController"
+		class="com.infolion.sapss.sqlReport.web.SqlReportController"
+		parent="baseMultiActionController" />	
+</beans>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="customer_data_v3">
+
+
+	<start-state name="客户主数据维护申请">
+		<transition to="部门及业务判断"></transition>
+	</start-state>
+
+
+	<decision name="部门及业务判断">
+		<transition to="贸管审单员审核" name="外贸片公司，且是修改供应商"></transition>
+		<transition to="子公司财务部维护公司层代码信息" name="非外贸片公司"></transition>
+		<transition to="信息中心维护" name="外贸片公司且是新增"></transition>
+	</decision>
+
+	<task-node name="贸管审单员审核">
+	    <task name="贸管审单员审核"></task>
+	    <transition to="信息中心维护" name="同意修改"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+	<node name="更新为有效">
+		<action class="com.infolion.sapss.workflow.mainData.GuestSuccessActionHandler" config-type="bean"></action>	
+		<transition to="结束（有效）"></transition>
+	</node>
+	<task-node name="信息中心维护">
+	    <task name="信息中心维护"></task>
+	    <transition to="更新为有效" name="已维护"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="修改">
+	    <task name="修改"></task>
+		<transition to="部门及业务判断" name="已修改，提交"></transition>
+		<transition to="更新为无效" name="作废该申请"></transition>
+	</task-node>
+
+	<node name="更新为无效">
+		<action class="com.infolion.sapss.workflow.mainData.GuestFailureActionHandler" config-type="bean"></action>	
+		<transition to="结束（无效）"></transition>
+	</node>
+
+	<task-node name="子公司财务部维护公司层代码信息">
+	    <task name="子公司财务部维护公司层代码信息"></task>
+	    <transition to="信息中心维护" name="提交信息中心维护"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+
+	<end-state name="结束（有效）"></end-state>
+
+	<end-state name="结束（无效）"></end-state>
+
+
+</process-definition>

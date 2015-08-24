@@ -1,0 +1,188 @@
+.icon-cls {
+    background-image: url(icons/fam/class.gif) !important;
+}
+.icon-event {
+    background-image: url(icons/fam/event.gif) !important;
+}
+.icon-config {
+    background-image: url(icons/fam/config.gif) !important;
+}
+.icon-prop {
+    background-image: url(icons/fam/prop.gif) !important;
+}
+.icon-method {
+    background-image: url(icons/fam/method.gif) !important;
+}
+.icon-cmp {
+    background-image: url(icons/fam/cmp.gif) !important;
+}
+.icon-pkg {
+    background-image: url(icons/fam/pkg.gif) !important;
+}
+.icon-fav {
+    background-image: url(icons/fam/fav.gif) !important;
+}
+.icon-static {
+    background-image: url(icons/fam/static.gif) !important;
+}
+.icon-docs {
+    background-image: url(icons/fam/docs.gif) !important;
+}
+.icon-help {
+    background-image: url(icons/fam/help.png) !important;
+}
+.icon-print {
+    background-image: url(icons/fam/printer.png) !important;
+}
+.icon-expand-all {
+    background-image: url(icons/fam/expand-all.gif) !important;
+}
+.icon-collapse-all {
+    background-image: url(icons/fam/collapse-all.gif) !important;
+}
+.icon-expand-members {
+    background-image: url(icons/fam/expand-members.gif) !important;
+}
+.icon-hide-inherited {
+    background-image: url(icons/fam/hide-inherited.gif) !important;
+}
+.icon-grid {
+    background-image: url(icons/fam/grid.png) !important;
+}
+.icon-form {
+    background-image: url(icons/fam/expand-members.gif) !important;
+}
+.icon-search {
+    background-image: url(icons/fam/searchico.png) !important;
+}
+.icon-clean {
+    background-image: url(icons/fam/refresh1.gif) !important;
+}
+.icon-option {
+    background-image: url(icons/fam/plugin.gif) !important;
+}
+.icon-undo {
+    background-image: url(icons/fam/undo.gif) !important;
+}
+.icon-upload {
+    background-image: url(icons/fam/upload.gif) !important;
+}
+.icon-export {
+    background-image: url(icons/fam/export.gif) !important;
+}
+.icon-add {
+    background-image: url(icons/fam/icon_add.gif) !important;
+}
+.icon-copyCreate {
+    background-image: url(icons/fam/icon_add.gif) !important;
+}
+.icon-assign {
+    background-image: url(icons/fam/icon_add.gif) !important;
+}
+.icon-edit {
+    background-image: url(icons/fam/icon_edit.gif) !important;
+}
+.icon-delete {
+    background-image: url(icons/fam/delete.gif) !important;
+}
+.icon-deletes {
+    background-image: url(icons/fam/icon_delete.gif) !important;
+}
+.icon-view {
+    background-image: url(icons/fam/icon_view.gif) !important;
+}
+.icon-item-add {
+    background-image: url(icons/fam/add.gif) !important;
+}
+.icon-item-edit {
+    background-image: url(icons/fam/cog_edit.png) !important;
+}
+.icon-item-delete {
+    background-image: url(icons/fam/icon_delete.gif) !important;
+}
+.icon-table-add {
+    background-image: url(icons/fam/table_add.png) !important;
+}
+.icon-table-edit {
+    background-image: url(icons/fam/table_edit.png) !important;
+}
+.icon-table-delete {
+    background-image: url(icons/fam/table_delete.png) !important;
+}
+.icon-table-cross {
+    background-image: url(icons/fam/cross.gif) !important;
+}
+.icon-table-clear {
+    background-image: url(icons/fam/group-unchecked.gif) !important;
+}
+.icon-table-checked {
+    background-image: url(icons/fam/checked.gif) !important;
+}
+.icon-table-checked2 {
+    background-image: url(icons/fam/checked2.gif) !important;
+}
+.icon-table-view {
+    background-image: url(icons/fam/application_view_list.png) !important;
+}
+.icon-table-save {
+    background-image: url(icons/fam/save.png) !important;
+}
+.icon-table-itemadd {
+    background-image: url(icons/fam/feed_add.png) !important;
+}
+.icon-table-itemdel {
+    background-image: url(icons/fam/feed_delete.png) !important;
+}
+.icon-user-add {
+    background-image: url(icons/fam/user_add.gif) !important;
+}
+.icon-user-edit {
+    background-image: url(icons/fam/user_edit.png) !important;
+}
+.icon-user-delete {
+    background-image: url(icons/fam/user_delete.gif) !important;
+}
+.icon-user-option {
+    background-image: url(icons/fam/user.gif) !important;
+}
+.icon-user-suit {
+    background-image: url(icons/fam/user_suit.gif) !important;
+}
+.icon-user-gray {
+    background-image: url(icons/fam/user_gray.png) !important;
+}
+
+.icon-window {
+    background-image: url(icons/fam/application_go.png) !important;
+}
+.icon-export {
+    background-image: url(icons/fam/export.gif) !important;
+}
+.task {
+    background-image:url(icons/fam/cog.png) !important;
+}
+.task-folder {
+    background-image:url(icons/fam/folder_go.png) !important;
+}
+
+.x-grid3-row-sum {
+    /*border:1px solid #dddddd;
+    background: #efefef url(../images/default/grid/grid3-hrow-sum.gif) repeat-x left top;
+    */
+    border:1px solid #dddddd;
+    background: url(icons/grid3-hrow-sum.gif) repeat-x left top;
+}
+
+.ext-ie .x-menu-item-icon {left: -24px; top: 0px;}
+.ext-strict .x-menu-item-icon {left: 3px; top: 3px;}
+.ext-ie6 .x-menu-item-icon {left: -24px; top: 0px;}
+
+.x-combo-noedit{
+    cursor:pointer;
+    background:#dddddd;
+}
+
+#x-input-noedit{
+    cursor:pointer;
+    background:#dddddd;
+}

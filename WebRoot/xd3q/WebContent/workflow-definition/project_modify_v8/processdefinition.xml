@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="project_modify_v8">
+
+
+	<start-state name="立项变更申请">
+		<transition to="关联单位判断" name="提交"></transition>
+	</start-state>
+
+
+	<task-node name="证券部审核">
+		<task name="证券部审核"></task>
+		<transition to="财务经理审核" name="通过"></transition>
+		<transition to="修改变更描述" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="财务经理审核">
+		<task name="财务经理审核"></task>
+		<transition to="芜湖信达贸易总经理审核" name="同意"></transition>
+		<transition to="修改变更描述" name="退回业务修改"></transition>
+	</task-node>
+
+	<task-node name="芜湖信达贸易总经理审核">
+		<task name="芜湖信达贸易总经理审核"></task>
+		<transition to="资金部经理审核" name="同意"></transition>
+		<transition to="修改变更描述" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="修改变更描述">
+		<task name="修改变更描述"></task>
+		<transition to="关联单位判断" name="提交"></transition>
+		<transition to="更新项目状态" name="不提交"></transition>
+	</task-node>
+
+	<task-node name="贸管经理审核">
+		<task name="贸管经理审核"></task>
+		<transition to="股份副总兼外贸公司总经理审批" name="提交股份公司副总审批"></transition>
+		<transition to="信息中心修改立项信息" name="同意修改"></transition>
+		<transition to="修改变更描述" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="股份副总兼外贸公司总经理审批">
+		<task name="股份副总兼外贸公司总经理审批"></task>
+		<transition to="金额判断2" name="通过"></transition>
+		<transition to="贸管经理审核" name="退回贸管经理审核"></transition>
+		<transition to="更新项目状态" name="不批准"></transition>
+	</task-node>
+
+	<task-node name="股份公司常务副总审批">
+		<task name="股份公司常务副总审批"></task>
+		<transition to="股份公司总经理审批" name="通过"></transition>
+		<transition to="贸管经理审核" name="退回贸管经理审核"></transition>
+		<transition to="更新项目状态" name="不批准"></transition>
+	</task-node>
+
+	<task-node name="股份公司总经理审批">
+		<task name="股份公司总经理审批"></task>
+		<transition to="金额判断3" name="通过"></transition>
+		<transition to="贸管经理审核" name="退回贸管经理审核"></transition>
+		<transition to="更新项目状态" name="不批准"></transition>
+	</task-node>
+
+	<task-node name="股份公司董事长审批">
+		<task name="股份公司董事长审批"></task>
+		<transition to="信息中心修改立项信息" name="通过"></transition>
+		<transition to="贸管经理审核" name="退回贸管经理审核"></transition>
+		<transition to="更新项目状态" name="不批准"></transition>
+	</task-node>
+
+	<decision name="关联单位判断">
+		<handler config-type="bean" class="com.infolion.sapss.workflow.decision.UnitJudgeDecisionHandler"></handler>
+		<transition to="证券部审核" name="关联单位并且金额大于300万或金额大于6亿">
+		</transition>
+		<transition to="财务经理审核" name="非关联单位"></transition>
+	</decision>
+
+	<decision name="金额判断2">
+		<handler config-type="bean" class="com.infolion.sapss.workflow.decision.Price2Judge500USDDecisionHandler"></handler>
+		<transition to="股份公司常务副总审批" name="金额大于500万美金或3500万人民币">
+		</transition>
+		<transition to="信息中心修改立项信息" name="金额小于500万美金或3500万人民币">
+		</transition>
+	</decision>
+
+	<decision name="金额判断3">
+		<handler config-type="bean" class="com.infolion.sapss.workflow.decision.Price3Judge1000USDDecisionHandler"></handler>
+		<transition to="股份公司董事长审批" name="金额大于1000万美金或7000万人民币">
+		</transition>
+		<transition to="信息中心修改立项信息" name="金额小于1000万美金或7000万人民币">
+		</transition>
+	</decision>
+
+	<node name="变更项目状态">
+		<action class="com.infolion.sapss.workflow.project.ProcessChangeSucessfulActionHandler"></action>
+		<transition to="立项变更申请通过"></transition>
+	</node>
+
+	<task-node name="信息中心修改立项信息">
+	    <task name="信息中心修改立项信息"></task>
+		<transition to="变更项目状态" name="变更执行完成"></transition>
+		<transition to="风险管理部审核" name="提交风险管理部审核"></transition>
+	</task-node>
+
+	<node name="更新项目状态">
+	    <action class="com.infolion.sapss.workflow.project.ProcessChangeFailureActionHandler"></action>
+		<transition to="立项变更申请不通过"></transition>
+	</node>
+
+	<task-node name="风险管理部审核">
+	    <task name="风险管理部审核"></task>
+		<transition to="变更项目状态" name="确认"></transition>
+	</task-node>
+
+	<task-node name="资金部经理审核">
+	    <task name="资金部经理审核"></task>
+		<transition to="贸管经理审核" name="同意"></transition>
+		<transition to="修改变更描述" name="退回修改"></transition>
+	</task-node>
+
+
+	<end-state name="立项变更申请通过"></end-state>
+
+	<end-state name="立项变更申请不通过"></end-state>
+
+
+</process-definition>

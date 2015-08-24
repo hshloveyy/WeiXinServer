@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="inner_transfer_approve_v1" width="850" height="530">
+  <node name="内部划拨申请" x="47" y="65" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="资金部经理审批" x="288" y="66" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="股份分管副总审批" x="287" y="166" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="出纳付款" x="286" y="262" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="机要室确认" x="530" y="261" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="更新状态为通过" x="531" y="351" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="更新状态为不通过" x="46" y="165" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="申请人修改" x="522" y="65" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-125" h1="-38" w2="109" h2="-39"/>
+    </edge>
+  </node>
+  <node name="申请通过" x="287" y="350" width="132" height="36"/>
+  <node name="申请不通过" x="45" y="261" width="132" height="36"/>
+</root-container>

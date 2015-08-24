@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="materiel_data_v3">
+
+
+	<start-state name="物料主数据新增或修改过流程">
+		<transition to="综合一部完善物料信息"></transition>
+	</start-state>
+
+
+	<task-node name="综合一部完善物料信息">
+	    <task name="综合一部完善物料信息"></task>
+		<transition to="信息中心维护物料信息" name="提交信息中心维护"></transition>
+		<transition to="修改申请表" name="信息不符退回修改"></transition>
+	</task-node>
+
+	<task-node name="信息中心维护物料信息">
+	    <task name="信息中心维护物料信息"></task>
+		<transition to="业务人员确认物料主数据" name="维护完成，提交业务人员确认"></transition>
+		<transition to="修改申请表" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="业务人员确认物料主数据">
+	    <task name="业务人员确认物料主数据"></task>
+		<transition to="更新为有效" name="确认已经维护完成"></transition>
+		<transition to="信息中心维护物料信息" name="未维护完成"></transition>
+	</task-node>
+
+	<task-node name="修改申请表">
+	    <task name="修改申请表"></task>
+		<transition to="综合一部完善物料信息" name="提交综合一部确认"></transition>
+		<transition to="更新为无效" name="作废该申请"></transition>
+	</task-node>
+
+	<node name="更新为有效">
+		<action class="com.infolion.sapss.workflow.mainData.GuestSuccessActionHandler" config-type="bean"></action>	
+		<transition to="结束（有效）"></transition>
+	</node>
+
+	<node name="更新为无效">
+		<action class="com.infolion.sapss.workflow.mainData.GuestFailureActionHandler" config-type="bean"></action>	
+		<transition to="结束（无效）"></transition>
+	</node>
+
+
+	<end-state name="结束（有效）"></end-state>
+
+	<end-state name="结束（无效）"></end-state>
+
+
+</process-definition>

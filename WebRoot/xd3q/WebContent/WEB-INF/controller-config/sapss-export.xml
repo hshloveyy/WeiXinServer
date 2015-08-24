@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="order" value="4" />
+		<!-- 是否登录拦截器，针对每个请求进行过滤 -->
+		<property name="interceptors">
+			<list>
+				<bean
+					class="com.infolion.platform.console.sys.LogonStateInterceptor" />
+			</list>
+		</property>
+		<property name="mappings">
+			<props>
+				<prop key="/exportController.spr">exportController</prop>
+				<prop key="/exportIncomeController.spr">exportIncomeController</prop>
+				<prop key="/exportDrawbackController.spr">exportDrawbackController</prop>
+                <prop key="/baleLoanController.spr">baleLoanController</prop> 
+                <prop key="/discountController.spr">discountController</prop>
+                <prop key="/negotiationController.spr">negotiationController</prop>
+                <prop key="/verificationReceiptController.spr">verificationReceiptController</prop>                                               
+			</props>
+		</property>
+	</bean>
+		
+	<!--出口相关信息控制器-->	
+    <bean id="exportController"         
+		class="com.infolion.sapss.export.web.ExportController"
+		parent="baseMultiActionControllerXD" />
+    <bean id="exportIncomeController"         
+		class="com.infolion.sapss.export.web.ExportIncomeController"
+		parent="baseMultiActionControllerXD" />
+    <bean id="exportDrawbackController"         
+		class="com.infolion.sapss.export.web.ExportDrawbackController"
+		parent="baseMultiActionControllerXD" />
+	<!--打包贷款管理控制器-->
+	<bean id="baleLoanController"         
+		class="com.infolion.sapss.export.web.BaleLoanController"
+		parent="baseMultiActionControllerXD" />
+	<bean id="discountController"         
+		class="com.infolion.sapss.export.web.DiscountController"
+		parent="baseMultiActionControllerXD" />
+	<bean id="negotiationController"         
+		class="com.infolion.sapss.export.web.NegotiationController"
+		parent="baseMultiActionControllerXD" />		
+   <bean id="verificationReceiptController"         
+		class="com.infolion.sapss.export.web.VerificationReceiptController"
+		parent="baseMultiActionControllerXD" />					
+		
+</beans>

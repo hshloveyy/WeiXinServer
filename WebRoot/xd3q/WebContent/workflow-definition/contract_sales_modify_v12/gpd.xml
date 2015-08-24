@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="contract_sales_modify_v12" width="1595" height="903">
+  <node name="合同变更申请" x="33" y="19" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="部门经理确认" x="359" y="18" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-17" h1="15" w2="165" h2="-419"/>
+      <bendpoint w1="-19" h1="73" w2="156" h2="-364"/>
+      <bendpoint w1="-94" h1="74" w2="81" h2="-363"/>
+      <bendpoint w1="-170" h1="74" w2="13" h2="-363"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-186" h1="2" w2="194" h2="-64"/>
+      <bendpoint w1="-184" h1="66" w2="196" h2="0"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="134" h1="56" w2="134" h2="-53"/>
+    </edge>
+  </node>
+  <node name="贸管经理审核" x="548" y="223" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="财务会计审核" x="883" y="126" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="股份副总兼外贸公司总经理审批" x="289" y="223" width="147" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="92" h1="-53" w2="-160" h2="-53"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-109" h1="-1" w2="3" h2="-233"/>
+    </edge>
+  </node>
+  <node name="股份公司常务副总审批" x="283" y="295" width="155" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-107" h1="-1" w2="3" h2="-161"/>
+    </edge>
+  </node>
+  <node name="股份公司总经理审批" x="288" y="371" width="147" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-109" h1="1" w2="2" h2="-83"/>
+    </edge>
+  </node>
+  <node name="股份公司董事长审批" x="453" y="452" width="146" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="0" h1="-64" w2="-272" h2="-73"/>
+      <bendpoint w1="53" h1="-63" w2="-219" h2="-72"/>
+      <bendpoint w1="112" h1="-62" w2="-160" h2="-71"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="修改变更描述" x="359" y="127" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="信息中心修改订单和合同信息" x="35" y="88" width="191" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="更新订单状态1" x="731" y="573" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="更新订单状态2" x="184" y="517" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="更新订单状态3" x="44" y="162" width="170" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="金额判断2" x="732" y="293" width="127" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="金额判断3" x="653" y="371" width="101" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-96" h1="39" w2="102" h2="-43"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="信息中心冻结订单" x="555" y="17" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="信息中心解冻订单并修改订单和合同信息" x="665" y="461" width="266" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="信息中心判断是否需要修改和解冻合同" x="123" y="455" width="254" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="财务经理审核" x="894" y="179" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="新加坡业务主管审核" x="881" y="235" width="150" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="关联交易判断" x="751" y="18" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="证券事业部审核" x="879" y="76" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="资金部经理审核" x="888" y="283" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="合同变更申请通过" x="529" y="536" width="132" height="36"/>
+  <node name="合同变更申请不通过" x="38" y="510" width="132" height="36"/>
+  <node name="合同变更申请通过（未经领导审批）" x="67" y="224" width="132" height="36"/>
+</root-container>

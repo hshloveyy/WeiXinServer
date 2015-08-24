@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition xmlns="" name="account_approve_v1">
+
+
+	<start-state name="银行主数据申请">
+		<transition to="资金部审批" name="提交资金部审批"></transition>
+	</start-state>
+
+
+	<task-node name="资金部审批">
+		<task name="资金部审批"></task>
+		<transition to="股份财务部信息补全" name="通过"></transition>
+		<transition to="子公司财务修改" name="退回修改"></transition>
+		<transition to="更新状态为不通过" name="不通过"></transition>
+	</task-node>
+
+	<task-node name="股份财务部信息补全">
+		<task name="股份财务部信息补全"></task>
+		<transition to="信息中心录入" name="录入完毕"></transition>
+		<transition to="子公司财务修改" name="退回"></transition>
+	</task-node>
+
+	<task-node name="子公司财务修改">
+		<task name="子公司财务修改"></task>
+		<transition to="资金部审批" name="提交资金部审批"></transition>
+	</task-node>
+
+	<node name="更新状态为不通过">
+		<action class="com.infolion.sapss.workflow.account.AccountProcessFaileActionHandler">
+		</action>
+		<transition to="申请不通过"></transition>
+	</node>
+
+	<task-node name="信息中心录入">
+		<task name="信息中心录入"></task>
+		<transition to="更新状态为通过" name="录入完毕"></transition>
+	</task-node>
+
+	<node name="更新状态为通过">
+		<action class="com.infolion.sapss.workflow.account.AccountProcessSucessfulActionHandler">
+		</action>
+		<transition to="申请通过"></transition>
+	</node>
+
+
+	<end-state name="申请不通过"></end-state>
+
+	<end-state name="申请通过"></end-state>
+
+
+</process-definition>

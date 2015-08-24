@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="credit_application_modify_v12">
+
+
+	<start-state name="信用证变更申请">
+		<transition to="部门经理确认" name="提交部门经理"></transition>
+	</start-state>
+
+
+	<task-node name="修改填写开证申请表及预保">
+	    <task name="修改填写开证申请表及预保"></task>
+		<transition to="部门经理确认" name="提交部门经理"></transition>
+	</task-node>
+
+	<task-node name="财务会计审核">
+	    <task name="财务会计审核"></task>
+		<transition to="财务经理审核" name="提交财务经理审核"></transition>
+		<transition to="修改填写开证申请表及预保" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="财务经理审核">
+	    <task name="财务经理审核"></task>
+		<transition to="新加坡业务主管审核" name="同意"></transition>
+		<transition to="修改填写开证申请表及预保" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="贸管审单员审核">
+	    <task name="贸管审单员审核"></task>
+		<transition to="贸管经理审核" name="提交贸管经理审核"></transition>
+		<transition to="修改填写开证申请表及预保" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="贸管经理审核">
+	    <task name="贸管经理审核"></task>
+		<transition to="股份副总兼外贸公司总经理审批" name="提交股份公司副总审批"></transition>
+		<transition to="贸管审单员审核" name="退回审单员修改"></transition>
+		<transition to="金额判断2" name="同意改证"></transition>
+	</task-node>
+
+	<task-node name="股份副总兼外贸公司总经理审批">
+	    <task name="股份副总兼外贸公司总经理审批"></task>
+		<transition to="金额判断" name="同意"></transition>
+		<transition to="修改填写开证申请表及预保" name="退回修改"></transition>
+		<transition to="更新信用证状态为改证申请不通过" name="不批准"></transition>
+	</task-node>
+
+	<task-node name="股份公司常务副总审批">
+	    <task name="股份公司常务副总审批"></task>
+		<transition to="股份公司总经理审批" name="同意"></transition>
+		<transition to="修改填写开证申请表及预保" name="退回修改"></transition>
+		<transition to="更新信用证状态为改证申请不通过" name="不批准"></transition>
+	</task-node>
+
+	<task-node name="股份公司总经理审批">
+	    <task name="股份公司总经理审批"></task>
+		<transition to="金额判断1" name="同意"></transition>
+		<transition to="修改填写开证申请表及预保" name="退回修改"></transition>
+		<transition to="更新信用证状态为改证申请不通过" name="不批准"></transition>
+	</task-node>
+
+	<task-node name="股份公司董事长审批">
+	    <task name="股份公司董事长审批"></task>
+		<transition to="修改填写开证申请表及预保" name="退回修改"></transition>
+		<transition to="更新信用证状态为改证申请不通过" name="不批准"></transition>
+		<transition to="更新信用证状态为改证通过" name="同意"></transition>
+	</task-node>
+
+	<decision name="金额判断">
+        <handler config-type="bean" class="com.infolion.sapss.workflow.credit.Price1JudgeDecisionHandler"></handler>
+		<transition to="股份公司常务副总审批" name="大于500万美金"></transition>
+		<transition to="更新信用证状态为改证通过" name="小于500万美金"></transition>
+	</decision>
+
+	<decision name="金额判断1">
+		<handler config-type="bean" class="com.infolion.sapss.workflow.credit.Price2JudgeDecisionHandler"></handler>
+		<transition to="股份公司董事长审批" name="大于1000万美金"></transition>
+		<transition to="更新信用证状态为改证通过" name="小于1000万美金"></transition>
+	</decision>
+
+	<task-node name="部门经理确认">
+	    <task name="部门经理确认"></task>
+		<transition to="资金部经理审核" name="确认提交"></transition>
+		<transition to="修改填写开证申请表及预保" name="退回修改"></transition>
+		<transition to="更新信用证状态为改证申请不通过" name="不通过"></transition>
+	</task-node>
+
+	<node name="更新信用证状态为改证申请不通过">
+		<action class="com.infolion.sapss.workflow.credit.CreditEntryHisProcessFaileActionHandler" config-type="bean"></action>
+		<transition to="信用证变更不通过"></transition>
+	</node>
+
+	<node name="更新信用证状态为改证通过">                    
+		<action class="com.infolion.sapss.workflow.credit.CreditEntryHisProcessSucessfulActionHandler" config-type="bean"></action>
+		<transition to="信用证变更通过"></transition>
+	</node>
+
+	<decision name="金额判断2">
+        <handler config-type="bean" class="com.infolion.sapss.workflow.credit.Price3JudgeDecisionHandler"></handler>
+		<transition to="更新信用证状态为改证通过" name="小于200万USD或1400万CNY"></transition>
+		<transition to="股份副总兼外贸公司总经理审批" name="大于200万USD或1400万CNY"></transition>
+	</decision>
+
+	<task-node name="新加坡业务主管审核">
+	    <task name="新加坡业务主管审核"></task>
+		<transition to="贸管审单员审核" name="同意"></transition>
+		<transition to="修改填写开证申请表及预保" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="资金部经理审核">
+	    <task name="资金部经理审核"></task>
+		<transition to="财务会计审核" name="同意"></transition>
+		<transition to="修改填写开证申请表及预保" name="退回修改"></transition>
+	</task-node>
+
+
+	<end-state name="信用证变更不通过"></end-state>
+
+	<end-state name="信用证变更通过"></end-state>
+
+</process-definition>

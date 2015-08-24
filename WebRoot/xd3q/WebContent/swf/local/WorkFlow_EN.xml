@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LangResource language="EN">
+	<bundle name="Common">
+		<pro name="OK">OK</pro>
+		<pro name="Delete">Delete</pro>
+		<pro name="Save">Save</pro>
+		<pro name="Cancel">Cancel</pro>
+	</bundle>
+	<bundle name="MSG">
+		<pro name="Info">Info</pro>
+		<pro name="Warn">Warn</pro>
+		<pro name="Error">Error</pro>
+		<pro name="UnknowMsg" replacements="content">Unknow Message:%content%</pro>
+	</bundle>
+	<bundle name="WorkFlow">
+		<pro name="NameOrPointNotSpec">Process name or version not specified</pro>
+		<pro name="TempV">Temp version</pro>
+		<pro name="Version" replacements="ver">Vs %ver%</pro>
+		<pro name="parseError1">Load process failed, process definition file or position definition file not found.</pro>
+		<pro name="parseError2">Illegal process definition file</pro>
+		<pro name="parseError3">Illegal position definition file</pro>
+		<pro name="parseError4">Process name should not be empty</pro>
+		<pro name="parseError5">Process def file and position def file not matching</pro>
+		<pro name="AddCom">Components</pro>
+		<pro name="AttDlg">Properties</pro>
+		<pro name="WorkFlowTitle" replacements="name">Workflow:%name%</pro>
+		<pro name="NoParrentProcess">Current Process is the Root Process, No Parent Process Exists!</pro>
+		<pro name="NoSubProcessInfo">Can not find any relevant processDefinition to selected subProcess!</pro>
+	</bundle>
+	<bundle name="Components">
+		<pro name="icoSelect">Select</pro>
+		<pro name="icoStart">Start</pro>
+		<pro name="icoEnd">End</pro>
+		<pro name="icoFork">Fork</pro>
+		<pro name="icoJoin">Join</pro>
+		<pro name="icoTask">Task</pro>
+		<pro name="icoAuto">Node</pro>
+		<pro name="icoDecision">Decision</pro>
+		<pro name="icoMail">Mail</pro>
+		<pro name="icoProcess">Process State</pro>
+		<pro name="icoArrow">Transition</pro>
+		<pro name="EventClass">Event Class</pro>
+		<pro name="EventExpress">Event Expression</pro>
+		<pro name="EventScript">Event Script</pro>
+		<pro name="Name">Name</pro>
+		<pro name="Desc">Description</pro>
+		<pro name="EventType">Event Type</pro>
+		<pro name="EventContentType">Event Content</pro>
+		<pro name="ActClassName">Action Class</pro>
+		<pro name="ActExpression">Action Expression</pro>
+		<pro name="ActName">Action Name</pro>
+		<pro name="ActType">Action Type</pro>
+		<pro name="DeciExpression">Expression</pro>
+		<pro name="DeciDelegation">Delegation Class</pro>
+		<pro name="DeciHandler">判断类型</pro>
+		<pro name="MailDestination">Mail Destination</pro>
+		<pro name="MailSubject">Mail Subject</pro>
+		<pro name="MailBody">Mail Body</pro>
+		<pro name="SubprocessName">Subprocess Name</pro>
+		<pro name="SubprocessVersion">Subprocess Version</pro>
+		<pro name="TaskName">Task Name</pro>
+		<pro name="TaskDesc">Task Description</pro>
+		<pro name="TaskClassName">Task Class</pro>
+		<pro name="NodeName">Node Name</pro>
+		<pro name="ProcessName">Process Name</pro>
+		<pro name="CreateProcess">Create Process</pro>
+		<pro name="Release">Release</pro>
+		<pro name="Save">Save</pro>
+		<pro name="Empty">Empty</pro>
+		<pro name="Reload">Reload</pro>
+		<pro name="CanNotUpdateProcess">Can not save or update process on View Model！</pro>
+		<pro name="ParentProcess">View Parent Process</pro>
+		<pro name="Edit">Edit</pro>
+		<pro name="CreateSubProcess">Add Sub Process</pro>
+	</bundle>
+	
+	<bundle name="SubProcessDialog">			
+		<pro name="Name">Process Name</pro>
+		<pro name="Search">Search</pro>
+		<pro name="Clear">Clear</pro>
+		<pro name="Desc">Process Text</pro>
+	</bundle>
+	
+	<bundle name="PageBar">		
+		<pro name="Pages">Pages</pro>
+	</bundle> 
+</LangResource>

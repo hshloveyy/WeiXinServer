@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dh>
+
+<!--方法资源--><date1>../../basicApp/authManage/authResourceController.spr?action=_manage</date1>
+<!--菜单资源--><date2>../../basicApp/authManage/menuController.spr?action=_manage</date2>
+<!--角色--><date3>../../basicApp/authManage/roleController.spr?action=_manage</date3>
+<!--用户--><date4>../../basicApp/authManage/userController.spr?action=_manage</date4>
+<!--用户组--><date5>../../basicApp/authManage/userGroupController.spr?action=_manage</date5>
+<!--在线用户--><date6>../../platform/basicApp/sysConsole/userOnline/sessionLogController.spr?action=toCurrentActionUserView</date6>
+<!--登录日志--><date7>../../platform/basicApp/sysConsole/userOnline/sessionLogController.spr?action=_manage</date7>
+<!--流程发布--><date8>../../workflow/deployWorkflowController.spr?action=_manage</date8>
+<!--流程定义--><date9>../../workflow/boProcessDefinitionController.spr?action=view</date9>
+<!--流程节点配置--><date10>../../workflow/extProcessDefinitionController.spr?action=view</date10>
+<!--缓存管理--><date11>../../basicApp/sysConsole/cacheManage/cacheManageController.spr</date11>
+<!--客户端管理--><date12>../../basicApp/client/clientController.spr?action=_manage</date12>
+<!--excel模板管理--><date13>../../excelTemplateController.spr?action=_manage</date13>
+<!--代码生成--><date14>../../codeGenerator/codeGenerateController.spr</date14>
+<!--敏捷用例--><date15>../../orderManage/purchaseOrder/purchaseOrderController.spr?action=_manage</date15>
+</dh>

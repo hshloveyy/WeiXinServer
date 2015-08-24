@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="credit_receive_v6" width="1051" height="839">
+  <node name="贸管人员信用证收证" x="72" y="20" width="183" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="信用证复核" x="85" y="105" width="156" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="-22" y="-13"/>
+      <bendpoint w1="158" h1="-39" w2="-171" h2="-39"/>
+    </edge>
+  </node>
+  <node name="业务人员确认，提出意见" x="64" y="190" width="198" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="贸管人员更改信用证状态" x="398" y="191" width="175" height="36">
+    <edge>
+      <label x="-21" y="-10"/>
+    </edge>
+  </node>
+  <node name="更新信用证状态" x="423" y="292" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="信用证收证修改" x="426" y="105" width="132" height="36">
+    <edge>
+      <label x="-41" y="3"/>
+      <bendpoint w1="-177" h1="25" w2="152" h2="25"/>
+    </edge>
+  </node>
+  <node name="信用证收证结束" x="422" y="374" width="132" height="36"/>
+</root-container>

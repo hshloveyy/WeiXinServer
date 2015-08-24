@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="consignment_import_home_v9">
+
+
+	<start-state name="合作进口，内贸发货申请">
+		<transition to="部门经理确认" name="提交部门经理确认"></transition>
+	</start-state>
+
+
+	<task-node name="财务审核">
+	    <task name="财务审核"></task>
+		<transition to="贸管专员审核" name="同意发货"></transition>
+		<transition to="修改发货申请信息" name="退回业务修改"></transition>
+	</task-node>
+
+	<task-node name="部门经理确认">
+	    <task name="部门经理确认"></task>
+		<transition to="财务审核" name="确认提交"></transition>
+		<transition to="修改发货申请信息" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="修改发货申请信息">
+	    <task name="修改发货申请信息"></task>
+		<transition to="部门经理确认" name="提交部门经理"></transition>
+		<transition to="更新出仓单状态为不通过" name="作废申请"></transition>
+	</task-node>
+
+	<task-node name="贸管专员审核">
+	    <task name="贸管专员审核"></task>
+		<transition to="综合一部仓管员确认" name="同意发货"></transition>
+		<transition to="修改发货申请信息" name="单据不符，退回业务修改"></transition>
+	</task-node>
+
+	<node name="更新出仓单状态为不通过">
+		<action class="com.infolion.sapss.workflow.ship.ConsgmtImportFaileActionHandler" config-type="bean"></action>
+		<transition to="发货申请不通过"></transition>
+	</node>
+
+	<node name="更新出仓单状态为通过">
+		<action class="com.infolion.sapss.workflow.ship.ConsgmtImportSucessfulActionHandler" config-type="bean"></action>
+		<transition to="发货申请通过"></transition>
+	</node>
+
+	<task-node name="综合一部仓管员确认">
+	    <task name="综合一部仓管员确认"></task>
+		<transition to="更新出仓单状态为通过" name="已在SAP系统做相关出库操作"></transition>
+		<transition to="修改发货申请信息" name="退回修改"></transition>
+	</task-node>
+
+
+	<end-state name="发货申请不通过"></end-state>
+
+	<end-state name="发货申请通过"></end-state>
+
+
+</process-definition>

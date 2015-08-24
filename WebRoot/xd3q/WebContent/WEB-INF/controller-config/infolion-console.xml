@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="order" value="4" />
+		<!-- 是否登录拦截器，针对每个请求进行过滤 -->
+		<property name="interceptors">
+			<list>
+				<bean class="com.infolion.platform.console.sys.LogonStateInterceptor" />
+			</list>
+		</property>
+		<property name="mappings">
+			<props>
+				<prop key="/loginController.spr">loginController</prop>
+				<prop key="/menuController.spr">xdssMenuController</prop>
+				<prop key="/dictController.spr">dictController</prop>
+				<prop key="/orgController.spr">orgController</prop>
+				<prop key="/workflowController.spr">workflowController</prop>
+                <prop key="/indexMainController.spr">xdss3IndexMainController</prop>
+                <prop key="/sqlReportController.spr">sqlReportController</prop>
+			</props>
+		</property>
+	</bean>
+	
+    
+   <bean id="xdss3IndexMainController"
+        class="com.infolion.platform.console.login.web.Xdss3IndexMainController"
+        parent="baseMultiActionController" />
+	<bean id="loginController"
+		class="com.infolion.platform.console.login.web.LoginController"
+		parent="baseMultiActionControllerXD" />
+	<bean id="xdssMenuController"
+		class="com.infolion.platform.console.menu.web.MenuController"
+		parent="baseMultiActionControllerXD" />
+	<bean id="dictController"
+		class="com.infolion.platform.console.dictionary.web.DictController"
+		parent="baseMultiActionControllerXD" />
+	<bean id="orgController"
+		class="com.infolion.platform.console.org.web.OrgController"
+		parent="baseMultiActionControllerXD" />
+	<bean id="workflowController"
+		class="com.infolion.platform.console.workflow.web.WorkflowController"
+		parent="baseMultiActionControllerXD" />
+    <bean id="sqlReportController"
+		class="com.infolion.sapss.sqlReport.web.SqlReportController"
+		parent="baseMultiActionControllerXD" />
+</beans>

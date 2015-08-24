@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="export_lend_v2" width="1051" height="839">
+  <node name="贴现或打包贷款申请" x="59" y="51" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="部门经理确认" x="271" y="52" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="上海贸易公司常务副总审核" x="390" y="155" width="132" height="36">
+    <edge>
+      <label x="-58" y="-18"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="股份公司副总审批" x="324" y="325" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="财务部人员办理并填写实收金额及币别" x="560" y="318" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="更新状态为不通过" x="111" y="220" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="更新状态为通过" x="578" y="403" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="修改申请信息" x="511" y="51" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-132" h1="-35" w2="114" h2="-42"/>
+    </edge>
+  </node>
+  <node name="审批通过" x="339" y="412" width="132" height="36"/>
+  <node name="审批不通过" x="122" y="296" width="132" height="36"/>
+</root-container>

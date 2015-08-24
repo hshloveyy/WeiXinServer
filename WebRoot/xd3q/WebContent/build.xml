@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+BDP平台
+-->
+<project basedir=".." default="build" name="infolion-BDP">
+    
+    <!-- 定义变量 -->
+    <property name="company"            value="厦门讯盟软件有限公司"/>
+    <property name="project.name"       value="infolion-BDP"/>
+    <property name="project.ver"        value="1.0"/>
+	<property name="project.dir"        value="E:/workspace/xd3q"/>
+    <property name="doc.projectname"    value="${project.name}-${project.ver}"/>
+
+    <property name="self.dir"            value="${basedir}/BDP-1.0-AllInOne"/><!-- Java工作目录或build.xml文件目录 -->
+	<property name="tomcat.dir"           value="${self.dir}/Tomcat5.0"/>
+
+    <property name="src.dir"            value="${self.dir}/src"/><!-- Java源文件目录 -->
+
+    <!-- 编译好的类及生成的javadoc文档目录 -->
+    <property name="build.path"         value="${self.dir}/WebContent/WEB-INF"/>
+    <property name="dest.dir"           value="${build.path}/classes"/>
+    <property name="docs.dir"           value="${build.path}/docs"/>
+
+    <property name="javalib.dir"        value="${self.dir}/WebContent/WEB-INF/lib"/>
+<!--
+	<target name="proguard" depends="init"> 
+		<taskdef resource="proguard/ant/task.properties" classpath="${javalib.dir}/proguard/proguard.jar" /> 
+		<proguard configuration="${src.dir}/config.pro" /> 
+	</target> 
+-->
+	<target name="build" 
+            depends="delclasses,javacompile,native2ascii" 
+            description="调用各种功能,请注意depends顺序"/>
+	<target name="clean" 
+            depends="delclasses,copysource,javacompile,native2ascii" 
+            description="调用各种功能,请注意depends顺序"/>
+    <target name="javacompile" description="编译java">
+        <echo message="创建${dest.dir}目录，编译java成class文件到此目录"/>
+        <mkdir dir="${dest.dir}"/>
+        <javac destdir="${dest.dir}" srcdir="${src.dir}" encoding="UTF-8" fork="true" executable="${self.dir}/jdk1.5.0_06/bin/javac" compiler="javac1.5" memoryMaximumSize="512m">
+            <classpath refid="project.class.path"/>
+        </javac>
+
+         <copy todir="${dest.dir}">
+            <fileset dir="${src.dir}">
+                <include name="**/*.properties"/>
+                <include name="**/*.txt"/>
+                <include name="**/*.xml"/>
+				<include name="**/*.xsd"/>
+                <include name="**/*.tld"/>
+                <include name="**/*.dtd"/>
+            </fileset>
+        </copy>
+    </target>
+    
+    <target name="delclasses" description="del classes">
+        <echo message="删除 ${dest.dir}目录."/>
+        <delete dir="${dest.dir}"/>
+    </target>
+    
+   <target name="native2ascii" description="资源文件转化">
+     <echo message="${src.dir}-${dest.dir}资源文件转化" /> 
+     <native2ascii src="${src.dir}" dest="${dest.dir}" encoding="UTF-8" ext=".properties" includes="**/*.prop" /> 
+   </target>
+
+	
+    <target name="javadoc" description="生成Javadocs.">
+        <echo message="创建${docs.dir}目录，生成Javadocs文件到此目录"/>
+        <mkdir dir="${docs.dir}"/>
+        <javadoc sourcepath="${src.dir}" 
+                 destdir="${docs.dir}" 
+                 windowtitle="${doc.projectname} API Documentation" 
+                 defaultexcludes="yes"	
+                 author="true" 
+                 version="true" 
+                 use="true">
+
+            <doctitle>
+                <![CDATA[<DIV STYLE='font-family:黑体;font-size:32px'><B>${doc.projectname} API Documentation</B></DIV>]]>
+            </doctitle>
+            <bottom>
+                <![CDATA[<DIV STYLE='font-family:宋体;font-size:14px'><I>Copyright &copy; 2003-2004 ${company}-${doc.projectname}</I></DIV>]]>
+            </bottom>
+            <classpath refid="project.class.path"/>
+             <packageset dir="${src.dir}">
+                <include name="**"/>
+            </packageset>
+            <packageset dir="${docs.dir}">
+                <include name="**"/>
+            </packageset>
+        </javadoc>
+    </target>
+
+    <target name="jar" description="未混淆文件打包生成jar">
+        <echo message="未混淆编译的类生成Jar文件到${build.path}目录"/>
+        <jar destfile="${build.path}/${project.name}-${project.ver}.jar">
+            <fileset dir="${dest.dir}">
+                <include name="**"/>
+            </fileset>
+        </jar>
+    </target>
+    
+    <target name="jar_docs" description="javadocs打包生成zip">
+        <echo message="docs文档生成zip文件到${build.path}目录"/>
+        <jar destfile="${build.path}/${project.name}-docs-${project.ver}.zip">
+            <fileset dir="${docs.dir}">
+                <include name="**"/>
+            </fileset>
+        </jar>
+    </target>
+
+    <target name="jar_src" description="源代码打包成zip">
+        <echo message="源代码生成zip文件到${build.path}目录"/>
+        <jar destfile="${build.path}/${project.name}-src-${project.ver}.zip">
+            <fileset dir="${src.dir}">
+                <include name="**"/>
+            </fileset>
+        </jar>
+    </target>
+	<!-- 拷贝开发代码到发布目录 -->
+    <target name="publicweb" description="copy file">
+        <echo message="发布web应用到${tomcat.dir}/webapps"/>
+         <copy todir="${tomcat.dir}/webapps">
+            <fileset dir="${self.dir}/WebContent">
+                <include name="**"/>
+            </fileset>
+        </copy>
+    </target>
+	<!-- 拷贝开发代码到发布目录 -->
+    <target name="copysource" description="copy file">
+        <echo message="开发代码复制到${src.dir}"/>
+         <copy todir="${src.dir}">
+            <fileset dir="${project.dir}/src">
+                <include name="**"/>
+            </fileset>
+        </copy>
+		<copy todir="${self.dir}/WebContent">
+            <fileset dir="${project.dir}/WebContent">
+                <include name="**"/>
+            </fileset>
+        </copy>
+    </target>
+    <!-- 把生成的joc-jar包复制到webapp的目录下 -->
+    <target name="copyjartowebapp" description="copy file">
+        <echo message="包文件复制到${dest.dir}/classes"/>
+         <copy todir="${dest.dir}/classes">
+            <fileset dir="${dest.dir}">
+                <include name="**"/>
+            </fileset>
+        </copy>
+    </target>
+    
+    <target name="war" description="生成war">
+        <echo message="生成部署文件"/>
+        <war destfile="${build.path}/${project.name}-${project.ver}.war" webxml="${dest.dir}/web.xml">
+            <fileset dir="${self.dir}/WebContent/">
+                <include name="**"/>
+            </fileset>
+        </war>
+        <echo message="复制部署文件到${self.dir}目录下"/>
+        <copy todir="${self.dir}/WebContent">
+            <fileset dir="${build.path}">
+                <include name="bdp.war"/>
+            </fileset>
+        </copy>
+    </target>
+    <!-- 用到的外部类即classpath -->
+    <path id="project.class.path">
+        <pathelement location="${dest.dir}"/>
+<pathelement location="${tomcat.dir}/common/lib/jsp-api.jar"/>
+		<pathelement location="${javalib.dir}/activation-1.1.jar"/>
+<pathelement location="${javalib.dir}/annogen-0.1.0.jar"/>
+<pathelement location="${javalib.dir}/antlr-2.7.5H3.jar"/>
+<pathelement location="${javalib.dir}/asm-2.2.3.jar"/>
+<pathelement location="${javalib.dir}/asm-commons-2.2.3.jar"/>
+<pathelement location="${javalib.dir}/aspectjweaver.jar"/>
+<pathelement location="${javalib.dir}/axiom-api-1.2.7.jar"/>
+<pathelement location="${javalib.dir}/axiom-impl-1.2.7.jar"/>
+<pathelement location="${javalib.dir}/axis.jar"/>
+<pathelement location="${javalib.dir}/axis2-adb-1.4.1.jar"/>
+<pathelement location="${javalib.dir}/axis2-kernel-1.4.1.jar"/>
+<pathelement location="${javalib.dir}/axis2-spring-1.4.1.jar"/>
+<pathelement location="${javalib.dir}/backport-util-concurrent.jar"/>
+<pathelement location="${javalib.dir}/bsh.jar"/>
+<pathelement location="${javalib.dir}/cfgatewayadapter.jar"/>
+<pathelement location="${javalib.dir}/cglib-nodep-2.1_3.jar"/>
+<pathelement location="${javalib.dir}/classes12.jar"/>
+<pathelement location="${javalib.dir}/common-annotations.jar"/>
+<pathelement location="${javalib.dir}/commons-beanutils.jar"/>
+<pathelement location="${javalib.dir}/commons-codec-1.3.jar"/>
+<pathelement location="${javalib.dir}/commons-collections-3.2.jar"/>
+<pathelement location="${javalib.dir}/commons-dbcp.jar"/>
+<pathelement location="${javalib.dir}/commons-digester-1.7.jar"/>
+<pathelement location="${javalib.dir}/commons-fileupload-1.2.jar"/>
+<pathelement location="${javalib.dir}/commons-httpclient-3.1.jar"/>
+<pathelement location="${javalib.dir}/commons-io-1.4.jar"/>
+<pathelement location="${javalib.dir}/commons-lang.jar"/>
+<pathelement location="${javalib.dir}/commons-logging-1.1.1.jar"/>
+<pathelement location="${javalib.dir}/commons-logging.jar"/>
+<pathelement location="${javalib.dir}/commons-pool.jar"/>
+<pathelement location="${javalib.dir}/concurrent.jar"/>
+<pathelement location="${javalib.dir}/cos.jar"/>
+<pathelement location="${javalib.dir}/db2jcc.jar"/>
+<pathelement location="${javalib.dir}/db2jcc_license_cu.jar"/>
+<pathelement location="${javalib.dir}/dom4j-1.6.1.jar"/>
+<pathelement location="${javalib.dir}/ehcache-1.2.4.jar"/>
+<pathelement location="${javalib.dir}/excelutils.jar"/>
+<pathelement location="${javalib.dir}/ezmorph-1.0.5.jar"/>
+<pathelement location="${javalib.dir}/fckeditor-java-core-2.4.jar"/>
+<pathelement location="${javalib.dir}/flex-messaging-common.jar"/>
+<pathelement location="${javalib.dir}/flex-messaging-core.jar"/>
+<pathelement location="${javalib.dir}/flex-messaging-opt.jar"/>
+<pathelement location="${javalib.dir}/flex-messaging-proxy.jar"/>
+<pathelement location="${javalib.dir}/flex-messaging-remoting.jar"/>
+<pathelement location="${javalib.dir}/freemarker.jar"/>
+<pathelement location="${javalib.dir}/hibernate-annotations.jar"/>
+<pathelement location="${javalib.dir}/hibernate-commons-annotations.jar"/>
+<pathelement location="${javalib.dir}/hibernate-entitymanager.jar"/>
+<pathelement location="${javalib.dir}/hibernate3.jar"/>
+<pathelement location="${javalib.dir}/infolinPlatform_2_0.jar"/>
+<pathelement location="${javalib.dir}/jaxen-1.1-beta-9.jar"/>
+<pathelement location="${javalib.dir}/jboss-backport-concurrent.jar"/>
+<pathelement location="${javalib.dir}/jbpm-identity.jar"/>
+<pathelement location="${javalib.dir}/jbpm-jpdl.jar"/>
+<pathelement location="${javalib.dir}/jbpm-pvm.jar"/>
+<pathelement location="${javalib.dir}/jcr-1.0.jar"/>
+<pathelement location="${javalib.dir}/jdom-1.0.jar"/>
+<pathelement location="${javalib.dir}/jofc2-1.0-0.jar"/>
+<pathelement location="${javalib.dir}/js.jar"/>
+<pathelement location="${javalib.dir}/json-lib-2.0-jdk15.jar"/>
+<pathelement location="${javalib.dir}/json-lib-ext-spring-1.0.2.jar"/>
+<pathelement location="${javalib.dir}/jstl.jar"/>
+<pathelement location="${javalib.dir}/jta.jar"/>
+<pathelement location="${javalib.dir}/jtds-1.2.1.jar"/>
+<pathelement location="${javalib.dir}/junit-4.4.jar"/>
+<pathelement location="${javalib.dir}/jxl.jar"/>
+<pathelement location="${javalib.dir}/log4j-1.2.15.jar"/>
+<pathelement location="${javalib.dir}/mail-1.4.jar"/>
+<pathelement location="${javalib.dir}/mssqlserver.jar"/>
+<pathelement location="${javalib.dir}/neethi-2.0.4.jar"/>
+<pathelement location="${javalib.dir}/org.springframework.flex-1.0.0.RELEASE.jar"/>
+<pathelement location="${javalib.dir}/persistence.jar"/>
+<pathelement location="${javalib.dir}/poi-2.5.1-final-20040804.jar"/>
+<pathelement location="${javalib.dir}/poi-3.6-20091214.jar"/>
+<pathelement location="${javalib.dir}/quartz-all-1.6.0.jar"/>
+<pathelement location="${javalib.dir}/sapjco.jar"/>
+<pathelement location="${javalib.dir}/sboapi.jar"/>
+<pathelement location="${javalib.dir}/sbowrapper.jar"/>
+<pathelement location="${javalib.dir}/servlet-api.jar"/>
+<pathelement location="${javalib.dir}/slf4j-api-1.5.2.jar"/>
+<pathelement location="${javalib.dir}/slf4j-nop-1.5.2.jar"/>
+<pathelement location="${javalib.dir}/spring-aspects.jar"/>
+<pathelement location="${javalib.dir}/spring-mock.jar"/>
+<pathelement location="${javalib.dir}/spring-modules-jbpm31.jar"/>
+<pathelement location="${javalib.dir}/spring-test.jar"/>
+<pathelement location="${javalib.dir}/spring-webmvc.jar"/>
+<pathelement location="${javalib.dir}/spring.jar"/>
+<pathelement location="${javalib.dir}/sqljdbc.jar"/>
+<pathelement location="${javalib.dir}/standard.jar"/>
+<pathelement location="${javalib.dir}/stax-api-1.0.1.jar"/>
+<pathelement location="${javalib.dir}/woden-api-1.0M8.jar"/>
+<pathelement location="${javalib.dir}/wsdl4j-1.6.2.jar"/>
+<pathelement location="${javalib.dir}/wstx-lgpl-3.2.2.jar"/>
+<pathelement location="${javalib.dir}/xalan.jar"/>
+<pathelement location="${javalib.dir}/xbean-2.2.0.jar"/>
+<pathelement location="${javalib.dir}/xbean-spring-2.8.jar"/>
+<pathelement location="${javalib.dir}/XmlSchema-1.4.2.jar"/>
+<pathelement location="${javalib.dir}/xstream-1.3.1.jar"/>
+        <!-- 混淆编译 -->
+        <pathelement location="${javalib.dir}/joc.jar"/>
+    </path>
+
+   
+
+</project>

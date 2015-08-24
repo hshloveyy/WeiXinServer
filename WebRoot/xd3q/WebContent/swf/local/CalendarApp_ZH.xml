@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LangResource language="ZH">
+	<bundle name="Common">
+		<pro name="OK">确定</pro>
+		<pro name="Delete">删除</pro>
+		<pro name="Save">保存</pro>
+		<pro name="Cancel">取消</pro>		
+		<pro name="Add">添加</pro>
+		<pro name="View">查看</pro>
+		<pro name="Edit">修改</pro>
+		<pro name="OperateSucess">操作成功！</pro>
+	</bundle>
+	<bundle name="CalendarApp">
+		<pro name="CalList">日历列表</pro>
+		<pro name="ConfirmDelCal" replacements="calName">确定删除日历：%calName%?</pro>
+		<pro name="InvalidDelCal" replacements="calName">抱歉,只有创建者才能删除此日历.删除日历:%calName%失败 !</pro>
+		<pro name="InvalidEditCal" replacements="calName">抱歉,只有创建者才能修改此日历.您没有此日历:%calName% 的修改权限 !</pro>
+		<pro name="InvalidEditAct" replacements="actName">抱歉,您没有此日历活动:%actName% 的修改权限 !</pro>
+		<pro name="Days" description="小日历上表示星期的文本，以星期日为第一个，依序用逗号隔开">日,一,二,三,四,五,六</pro>
+		<pro name="Months" description="小日历上表示月份的文本，依序用逗号隔开">一月,二月,三月,四月,五月,六月,七月,八月,九月,十月,十一月,十二月</pro>
+		<pro name="Month">月</pro>
+		<pro name="Week">周</pro>
+		<pro name="Date">日</pro>
+		<pro name="CreateCal">创建日历</pro>
+		<pro name="EditCal">编辑日历信息</pro>
+		<pro name="CreateAct">创建活动</pro>
+		<pro name="EditAct">编辑活动</pro>
+		<pro name="DateText" replacements="year,month,date">%year%年%month%月%date%日</pro>
+		<pro name="MonthText" replacements="year,month">%year%年%month%月</pro>
+		<pro name="DaysText" replacements="year1,month1,date1,year2,month2,date2">%year1%年%month1%月%date1%日 ~ %year2%年%month2%月%date2%日</pro>
+		<pro name="Create">创建</pro>
+		<pro name="Previous">上一个</pro>
+		<pro name="Next">下一个</pro>		
+		
+		<pro name="CreateCalGroup">创建日历组</pro>	
+		<pro name="EidtCalGroup">编辑日历组</pro>	
+		<pro name="CalLoadFail">日历装载失败!</pro>	
+		<pro name="NoLang" replacements="lang">未找到合适的语言包:%lang%</pro>				
+	</bundle>
+	
+	<bundle name="AddCalendarDialog">
+		<pro name="SelectCal">选择日历</pro>				
+	</bundle>
+	
+	<bundle name="CalActivityDialog">
+		<pro name="Content">内容</pro>				
+		<pro name="Time">时间</pro>
+		<pro name="To">到</pro>	
+		<pro name="AllDay">全天</pro>
+		<pro name="Calendar">日历</pro>
+		<pro name="Desc">说明</pro>
+		<pro name="InvalidActivityTime">活动时间无效：结束时间不能早于开始时间，间隔时间应不小于15分钟！</pro>
+		<pro name="InvalidActivityDate">活动日期无效：结束日期不能早于开始日期！</pro>
+		<pro name="InvalidTimeFormat">时间格式出错：不满足时间格式：小时:分钟    （小时：0-23  分钟：0-59）</pro>
+		<pro name="ActivityeSummaryNotNull">活动内容不能为空!</pro>
+		<pro name="Repetition">重复频率</pro>
+		<pro name="Remind">提醒</pro>	
+		<pro name="Ahead">提前</pro>
+		<pro name="Minutes">分钟</pro>
+		<pro name="AddRemind">添加提醒</pro>
+		<pro name="UpdateRemind">更新提醒</pro>
+		<pro name="DeleteRemind">删除提醒</pro>
+		<pro name="InvalidRemindTime">提醒时间数据类型不对,请输入数字！</pro>
+		
+		<pro name="ChooseBA">关联业务活动</pro>
+		<pro name="CreateBA">创建业务活动</pro>
+		<pro name="ViewBA">查看业务活动</pro>
+		
+		<pro name="GroupTip">日历组:</pro>
+		<pro name="CalendarTip">日历:</pro>
+		
+		<pro name="TimeTypes">分钟,小时,天,星期</pro>		
+		<pro name="RemindWays">电子邮件,短信,弹出式窗口</pro>		
+		<pro name="RepetitionTypes">不重复,每天,每个工作日（周一到周五）,每周,每月</pro>
+		
+		<pro name="InvalidCalendar">请选择一个有效日历!</pro>
+		<pro name="InfoSave">请先保存活动!</pro>	
+		<pro name="InfoRefresh">暂时没有关联的业务活动(请创建或者刷新页面)!</pro>	
+	</bundle>
+	<bundle name="CalendarDialog">
+		<pro name="CalName">日历名称</pro>				
+		<pro name="Desc">说明</pro>
+		<pro name="Color">颜色</pro>	
+		<pro name="CalendarNameNotNull">日历名不能为空</pro>
+		
+		<pro name="CalGroup">所属分组</pro>
+		<pro name="AssignCal">分配日历用户</pro>	
+		<pro name="Operate">操作</pro>
+		<pro name="Type">类型</pro>
+		<pro name="Name">名称</pro>
+		<pro name="Privilege">权限</pro>
+		
+		<pro name="Add">添加</pro>
+		<pro name="Remind">提醒</pro>
+		<pro name="Edit">修改</pro>
+		<pro name="CreateCalUser">增加日历用户</pro>
+		<pro name="Types">用户,用户组,角色,组织</pro>	
+	</bundle>
+	
+	<bundle name="CalendarGroupDialog">
+		<pro name="CalGroupName">日历组名</pro>				
+		<pro name="Desc">说明</pro>
+		<pro name="CalendarGroupNameNotNull">日历组名不能为空</pro>
+		<pro name="InvalidDelCalGroup" replacements="calGroupName">不能删除日历组：%calGroupName%！此日历组下还有关联日历.</pro>
+	</bundle>
+	
+	<bundle name="CalendarUserDialog">
+		<pro name="Type">类型</pro>		
+		<pro name="Types">用户,用户组,角色,组织</pro>			
+		<pro name="Name">名称</pro>
+		<pro name="Search">查询</pro>
+		<pro name="Clear">清空</pro>
+		<pro name="Desc">描述</pro>
+		<pro name="Selected">是否选中</pro>
+	</bundle>
+	
+	<bundle name="CalListDealEntry">
+		<pro name="ConfigCal">日历设置</pro>
+		<pro name="DeleteCal">删除此日历</pro>
+		<pro name="HideCal">隐藏此日历</pro>
+		<pro name="ShowCal">显示此日历</pro>
+		<pro name="Color">颜色</pro>
+	</bundle>
+	
+	<bundle name="BusinessActivityDialog">		
+		<pro name="Name">业务名称</pro>
+		<pro name="Desc">描述</pro>
+	</bundle>
+	
+	<bundle name="PageBar">		
+		<pro name="Pages">页数</pro>
+	</bundle> 
+	
+	<bundle name="RemindHBox">
+		<pro name="Remind">提醒</pro>	
+		<pro name="Ahead">提前</pro>
+		<pro name="Minutes">分钟</pro>
+		<pro name="AddRemind">添加提醒</pro>
+		<pro name="UpdateRemind">更新提醒</pro>
+		<pro name="DeleteRemind">删除提醒</pro>
+		<pro name="InvalidRemindTime">提醒时间数据类型不对,请输入数字！</pro>			
+		<pro name="TimeTypes">分钟,小时,天,星期</pro>		
+		<pro name="RemindWays">电子邮件,短信,弹出式窗口</pro>		
+		<pro name="InvalidRemindTime">提醒时间数据类型不对,请输入数字！</pro>		
+	</bundle>
+	
+	<bundle name="DomainObjectService">
+		<pro name="InvalidDateString" replacements="dateString">传入的时间不符合格式:%dateString%</pro>
+	</bundle>
+</LangResource>

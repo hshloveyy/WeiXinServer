@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="foreign_trade_LC_DP_DA_pay_v3">
+
+
+	<start-state name="LC/DP/DA承兑付款申请">
+		<transition to="部门经理确认" name="提交部门经理"></transition>
+	</start-state>
+
+
+	<task-node name="部门经理确认">
+	    <task name="部门经理确认"></task>
+		<transition to="财务会计审核" name="确认提交"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="财务会计审核">
+	   <task name="财务会计审核"></task>
+		<transition to="财务经理审核" name="提交财务经理审核"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="财务经理审核">
+	    <task name="财务经理审核"></task>
+		<transition to="信达安贸管经理审核" name="提交信达安贸管审核"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="贸管经理审核">
+	    <task name="贸管经理审核"></task>
+		<transition to="金额判断" name="同意"></transition>
+		<transition to="修改" name="退回修改"></transition>
+		<transition to="股份公司副总审批" name="提交股份公司副总审批"></transition>
+	</task-node>
+
+	<task-node name="股份公司副总审批">
+	    <task name="股份公司副总审批"></task>
+		<transition to="信达安总经理" name="提交信达安总经理审批"></transition>
+		<transition to="贸管经理审核" name="退回贸管经理审核"></transition>
+		<transition to="更新状态为不通过" name="不同意付款"></transition>
+	</task-node>
+
+	<task-node name="信达安总经理">
+	    <task name="信达安总经理"></task>
+		<transition to="金额判断1" name="同意"></transition>
+		<transition to="贸管经理审核" name="退回贸管经理审核"></transition>
+		<transition to="更新状态为不通过" name="不同意"></transition>
+	</task-node>
+
+	<task-node name="信达安副董事长审批">
+	    <task name="信达安副董事长审批"></task>
+		<transition to="金额判断2" name="同意"></transition>
+		<transition to="贸管经理审核" name="退回贸管经理审核"></transition>
+		<transition to="更新状态为不通过" name="不同意"></transition>
+	</task-node>
+
+	<task-node name="信达安董事长审批">
+	    <task name="信达安董事长审批"></task>
+		<transition to="是否领取核销单" name="同意付款"></transition>
+		<transition to="贸管经理审核" name="退回贸管经理审核"></transition>
+		<transition to="更新状态为不通过" name="不同意"></transition>
+	</task-node>
+
+	<decision name="金额判断">
+		<handler config-type="bean"  class="com.infolion.sapss.workflow.payment.Price1JudgeDecisionHandler"></handler>
+		<transition to="股份公司副总审批" name="大于200万USD或1400万CNY"></transition>
+		<transition to="是否领取核销单" name="小于200万USD或1400万CNY"></transition>
+	</decision>
+
+	<decision name="金额判断1">
+		<handler config-type="bean"  class="com.infolion.sapss.workflow.payment.Price2JudgeDecisionHandler"></handler>
+		<transition to="信达安副董事长审批" name="大于500万USD或3500万CNY"></transition>
+		<transition to="是否领取核销单" name="小于500万USD或3500万CNY"></transition>
+	</decision>
+
+	<decision name="金额判断2">
+		<handler config-type="bean"  class="com.infolion.sapss.workflow.payment.Price3JudgeDecisionHandler"></handler>
+		<transition to="信达安董事长审批" name="大于1000万USD或7000万CNY"></transition>
+		<transition to="是否领取核销单" name="小于1000万USD或7000万CNY"></transition>
+	</decision>
+
+	<decision name="是否即期付款">
+		<handler config-type="bean"  class="com.infolion.sapss.workflow.payment.CIJudgeDecisionHandler"></handler>
+		<transition to="出纳确认" name="是"></transition>
+		<transition to="办理承兑" name="否"></transition>
+	</decision>
+
+	<task-node name="办理承兑">
+	    <task name="办理承兑"></task>
+		<transition to="承兑付款申请" name="办理完成"></transition>
+	</task-node>
+
+	<task-node name="出纳确认">
+	    <task name="出纳确认"></task>
+		<transition to="财务会计确认" name="确认"></transition>
+	</task-node>
+
+	<task-node name="财务会计确认">
+	    <task name="财务会计确认"></task>
+		<transition to="更新状态为审批通过" name="确认"></transition>
+	</task-node>
+
+	<node name="更新状态为审批通过">
+		<action class="com.infolion.sapss.workflow.payment.LCDPDAProcessSuccessActionHandler"></action>
+		<transition to="结束（审批通过）"></transition>
+	</node>
+
+	<task-node name="承兑付款申请">
+	    <task name="承兑付款申请"></task>
+		<transition to="部门经理确认付款申请" name="承兑付款申请，提交部门经理确认"></transition>
+		<transition to="部门经理确认押汇付款" name="押汇申请"></transition>
+	</task-node>
+
+	<task-node name="部门经理确认付款申请">
+	    <task name="部门经理确认付款申请"></task>
+		<transition to="财务会计审核付款" name="确认提交"></transition>
+		<transition to="承兑付款申请" name="退回修改承兑付款申请"></transition>
+	</task-node>
+
+	<task-node name="财务会计审核付款">
+	    <task name="财务会计审核付款"></task>
+		<transition to="财务经理审核付款" name="提交财务经理"></transition>
+		<transition to="承兑付款申请" name="退回修改承兑付款申请"></transition>
+	</task-node>
+
+	<task-node name="财务经理审核付款">
+	    <task name="财务经理审核付款"></task>
+		<transition to="信达安贸管审核承兑到期付款" name="提交信达安贸管审核"></transition>
+		<transition to="承兑付款申请" name="退回修改承兑付款申请"></transition>
+	</task-node>
+
+	<task-node name="修改">
+	    <task name="修改"></task>
+		<transition to="部门经理确认" name="提交部门经理"></transition>
+	</task-node>
+
+	<node name="更新状态为不通过">
+		<action class="com.infolion.sapss.workflow.payment.LCDPDAProcessFailureActionHandler"></action>
+		<transition to="结束（申请不通过）"></transition>
+	</node>
+
+   <task-node name="填写核销单">
+	    <task name="填写核销单"></task>
+		<transition to="是否即期付款" name="核销单已填写"></transition>
+	</task-node>
+
+	<decision name="是否领取核销单">
+		<handler config-type="bean" class="com.infolion.sapss.workflow.payment.HasRecWriteJudgeDecisionHandler"></handler>
+		<transition to="填写核销单" name="是"></transition>
+		<transition to="是否即期付款" name="否"></transition>
+	</decision>
+
+	<task-node name="部门经理确认押汇付款">
+	    <task name="部门经理确认押汇付款"></task>
+		<transition to="财务人员确认押汇申请" name="确认提交押汇付款"></transition>
+		<transition to="承兑付款申请" name="退回修改押汇申请"></transition>
+	</task-node>
+
+	<task-node name="财务人员确认押汇申请">
+	    <task name="财务人员确认押汇申请"></task>
+		<transition to="财务经理确认押汇申请" name="提交财务经理审核"></transition>
+		<transition to="承兑付款申请" name="退回"></transition>
+	</task-node>
+
+	<task-node name="财务经理确认押汇申请">
+	    <task name="财务经理确认押汇申请"></task>
+		<transition to="信达安贸管审核押汇申请" name="提交信达安贸管审核押汇申请"></transition>
+		<transition to="承兑付款申请" name="退回"></transition>
+	</task-node>
+
+	<task-node name="信达安贸管审核押汇申请">
+	    <task name="信达安贸管审核押汇申请"></task>
+		<transition to="信达安副总审核押汇信息" name="提交信达安副总审核押汇申请"></transition>
+		<transition to="承兑付款申请" name="退回"></transition>
+	</task-node>
+
+	<task-node name="贸管审单员确认押汇申请">
+	    <task name="贸管审单员确认押汇申请"></task>
+		<transition to="股份公司副总审批押汇申请" name="提交股份公司副总审批押汇申请"></transition>
+		<transition to="承兑付款申请" name="退回"></transition>
+	</task-node>
+
+	<task-node name="股份公司副总审批押汇申请">
+	    <task name="股份公司副总审批押汇申请"></task>
+		<transition to="信达安总经理审批押汇申请" name="提交信达安总经理审批押汇申请"></transition>
+		<transition to="承兑付款申请" name="不同意押汇"></transition>
+	</task-node>
+
+	<task-node name="信达安总经理审批押汇申请">
+	    <task name="信达安总经理审批押汇申请"></task>
+		<transition to="办理押汇" name="同意押汇"></transition>
+		<transition to="承兑付款申请" name="不同意押汇"></transition>
+	</task-node>
+
+	<task-node name="办理押汇">
+	    <task name="办理押汇"></task>
+		<transition to="押汇付款申请" name="已办理完成"></transition>
+	</task-node>
+
+	<task-node name="押汇付款申请">
+	    <task name="押汇付款申请"></task>
+		<transition to="部门经理确认押汇付款申请" name="提交部门经理确认押汇付款申请"></transition>
+	</task-node>
+
+	<task-node name="部门经理确认押汇付款申请">
+	    <task name="部门经理确认押汇付款申请"></task>
+		<transition to="部门会计审核押汇付款" name="确认提交押汇付款申请"></transition>
+		<transition to="押汇付款申请" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="部门会计审核押汇付款">
+	    <task name="部门会计审核押汇付款"></task>
+		<transition to="财务经理审核押汇付款" name="提交财务经理"></transition>
+		<transition to="押汇付款申请" name="退回"></transition>
+	</task-node>
+
+	<task-node name="财务经理审核押汇付款">
+	    <task name="财务经理审核押汇付款"></task>
+		<transition to="信达安贸管确认押汇付款" name="提交信达安贸管"></transition>
+		<transition to="押汇付款申请" name="退回"></transition>
+	</task-node>
+
+	<task-node name="出纳付款">
+	    <task name="出纳付款"></task>
+		<transition to="填写押汇信息" name="确认付款"></transition>
+	</task-node>
+
+	<task-node name="填写押汇信息">
+	    <task name="填写押汇信息"></task>
+		<transition to="更新状态为审批通过" name="押汇信息已填写"></transition>
+	</task-node>
+
+	<task-node name="信达安贸管经理审核">
+	    <task name="信达安贸管经理审核"></task>
+		<transition to="信达安副总审核" name="提交信达安副总审核"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="信达安副总审核">
+	    <task name="信达安副总审核"></task>
+		<transition to="股份贸管审单员审核" name="提交股份贸管部审核"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="信达安副总审核押汇信息">
+	    <task name="信达安副总审核押汇信息"></task>
+		<transition to="贸管审单员确认押汇申请" name="提交股份贸管部审核"></transition>
+		<transition to="承兑付款申请" name="退回"></transition>
+	</task-node>
+
+	<task-node name="信达安贸管确认押汇付款">
+	    <task name="信达安贸管确认押汇付款"></task>
+		<transition to="信达安副总确认押汇付款" name="提交信达安副总审核"></transition>
+		<transition to="押汇付款申请" name="退回"></transition>
+	</task-node>
+
+	<task-node name="信达安副总确认押汇付款">
+	    <task name="信达安副总确认押汇付款"></task>
+		<transition to="股份公司副总审核押汇付款" name="提交股份副总审核"></transition>
+		<transition to="押汇付款申请" name="退回"></transition>
+	</task-node>
+
+	<task-node name="股份公司副总审核押汇付款">
+	    <task name="股份公司副总审核押汇付款"></task>
+		<transition to="出纳付款" name="同意付款"></transition>
+		<transition to="押汇付款申请" name="退回"></transition>
+	</task-node>
+
+	<task-node name="信达安贸管审核承兑到期付款">
+	    <task name="信达安贸管审核承兑到期付款"></task>
+		<transition to="信达安副总审核承兑到期付款" name="提交信达安副总审核"></transition>
+		<transition to="承兑付款申请" name="退回修改承兑付款申请"></transition>
+	</task-node>
+
+	<task-node name="信达安副总审核承兑到期付款">
+	    <task name="信达安副总审核承兑到期付款"></task>
+		<transition to="股份副总审核承兑到期付款" name="提交股份公司副总审核"></transition>
+		<transition to="承兑付款申请" name="退回修改承兑付款申请"></transition>
+	</task-node>
+
+	<task-node name="股份副总审核承兑到期付款">
+	    <task name="股份副总审核承兑到期付款"></task>
+		<transition to="出纳确认" name="同意付款"></transition>
+		<transition to="承兑付款申请" name="退回修改承兑付款申请"></transition>
+	</task-node>
+
+	<task-node name="股份贸管审单员审核">
+	    <task name="股份贸管审单员审核"></task>
+		<transition to="贸管经理审核" name="提交贸管经理"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+	<end-state name="结束（审批通过）"></end-state>
+
+	<end-state name="结束（申请不通过）"></end-state>
+
+
+</process-definition>

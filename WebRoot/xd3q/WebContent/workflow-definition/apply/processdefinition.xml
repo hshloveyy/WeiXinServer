@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<process-definition xmlns="urn:jbpm.org:jpdl-3.2"
+	name="apply">
+	<start-state name="请假表决流程">
+		<transition to="PMO办公室审批"></transition>
+	</start-state>
+	<task-node name="PMO办公室审批">
+		<task name="PMO办公室审批"/>
+		<transition to="fork1" name="同意"></transition>
+		<transition to="node1" name="不同意请假"></transition>
+	</task-node>
+	<task-node name="投资决策部经理审批">
+		<task name="投资决策部经理审批"/>
+		<transition to="join1" name="同意"></transition>
+		<transition to="node1" name="不同意请假"></transition>
+	</task-node>
+	<task-node name="市场部经理审批">
+		<task name="市场部经理审批"/>
+		<transition to="join1" name="同意"></transition>
+		<transition to="node1" name="不同意请假"></transition>
+	</task-node>
+
+	<fork name="fork1">
+		<transition to="市场部经理审批" name="市场部审批"/>
+		<transition to="投资决策部经理审批" name="投资决策审批"/>
+	</fork>
+
+	<join name="join1">
+		<transition to="node2"/>
+	</join>
+
+	<node name="node1">
+		<action class="com.infolion.sample.workflow.SubProcessFaileActionHandler" config-type="bean"></action>
+		<transition to="不同意请假"></transition>
+	</node>
+
+	<node name="node2">
+		<action class="com.infolion.sample.workflow.SubProcessSucessfulActionHandler" config-type="bean"></action>
+		<transition to="同意请假"></transition>
+	</node>
+	<end-state name="同意请假"/>
+
+	<end-state name="不同意请假"/>
+</process-definition>

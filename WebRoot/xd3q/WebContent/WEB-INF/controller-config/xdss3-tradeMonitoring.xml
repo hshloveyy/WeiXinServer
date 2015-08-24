@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="order" value="4" />
+		<!-- 是否登录拦截器，针对每个请求进行过滤 -->
+		<property name="interceptors">
+			<list>
+				<bean
+					class="com.infolion.platform.console.sys.LogonStateInterceptor" />
+			</list>
+		</property>
+		<property name="mappings">
+			<props>
+				<prop key="/tradeMonitoringController.spr">tradeMonitoringController</prop>
+		        <prop key="/syncMasterController.spr">syncMasterController</prop>
+		        <prop key="/ageAnalysisController.spr">ageAnalysisController</prop>
+		       
+		        <prop key="/unclearCustomerQueryController.spr">unclearCustomerQueryController</prop>
+		        <prop key="/unclearSupplierQueryController.spr">unclearSupplierQueryController</prop>
+		        
+		        <prop key="/cashFlowQueryController.spr">cashFlowQueryController</prop>
+		        
+		        <prop key="/customerMasterController.spr">customerMasterController</prop>
+		        <prop key="/supplierMasterController.spr">supplierMasterController</prop>
+		         <prop key="/deptByCusuController.spr">deptByCusuController</prop>
+		         <prop key="/foreignExchangeController.spr">foreignExchangeController</prop>
+		          <prop key="/exchangeRateController.spr">exchangeRateController</prop>
+		         <prop key="/kpiController.spr">kpiController</prop>
+        	</props>
+		</property>
+	</bean>
+
+	<bean id="tradeMonitoringController"         
+		class="com.infolion.xdss3.tradeMonitoring.web.TradeMonitoringController"
+		parent="baseMultiActionController" />	
+    <bean id="syncMasterController"         
+        class="com.infolion.xdss3.masterData.web.SyncMasterController"
+        parent="baseMultiActionController" />     
+     <bean id="ageAnalysisController"         
+        class="com.infolion.xdss3.ageAnalysis.web.AgeAnalysisController"
+        parent="baseMultiActionController" />    
+       
+      <bean id="unclearCustomerQueryController"         
+        class="com.infolion.xdss3.unclearQuery.web.UnclearCustomerQueryController"
+        parent="baseMultiActionController" />   
+      <bean id="unclearSupplierQueryController"         
+        class="com.infolion.xdss3.unclearQuery.web.UnclearSupplierQueryController"
+        parent="baseMultiActionController" />            
+          
+        <bean id="cashFlowQueryController"         
+        class="com.infolion.xdss3.cashFlow.web.CashFlowQueryController"
+        parent="baseMultiActionController" />     
+        
+         <bean id="customerMasterController"         
+        class="com.infolion.xdss3.customerSupplierMaster.web.CustomerMasterController"
+        parent="baseMultiActionController" />   
+        
+         <bean id="supplierMasterController"         
+        class="com.infolion.xdss3.customerSupplierMaster.web.SupplierMasterController"
+        parent="baseMultiActionController" />   
+        
+         <bean id="deptByCusuController"         
+        class="com.infolion.xdss3.customerSupplierMaster.web.DeptByCusuController"
+        parent="baseMultiActionController" />  
+        
+        <bean id="foreignExchangeController"         
+        class="com.infolion.xdss3.foreignExchange.web.ForeignExchangeController"
+        parent="baseMultiActionController" />  
+        <bean id="exchangeRateController" class="com.infolion.xdss3.exchangeRate.web.ExchangeRateController"
+         parent="baseMultiActionController" />  
+           <bean id="kpiController" class="com.infolion.xdss3.kpi.web.KpiController"
+         parent="baseMultiActionController" />  
+        
+</beans>

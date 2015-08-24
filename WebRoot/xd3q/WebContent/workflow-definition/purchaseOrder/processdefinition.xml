@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition xmlns= "urn:jbpm.org:jpdl-3.2" xmlns:xs="http://www.w3.org/2001/XMLSchema"  name="purchaseOrder">
+
+
+	<start-state name="采购合同申请">
+		<transition to="部门经理确认" name="提交部门经理"></transition>
+	</start-state>
+
+
+	<task-node name="部门经理确认">
+		<task name="部门经理确认"></task>
+		<transition to="财务经理审核" name="同意采购"></transition>
+		<transition to="更新订单状态为不通过" name="不同意采购"></transition>
+	</task-node>
+
+	<task-node name="财务经理审核">
+		<task name="财务经理审核"></task>
+		<transition to="更新订单状态为通过"></transition>
+	</task-node>
+
+	<node name="更新订单状态为通过">
+		<transition to="合同申请通过"></transition>
+	</node>
+
+	<node name="更新订单状态为不通过">
+		<transition to="合同申请不通过"></transition>
+	</node>
+
+
+	<end-state name="合同申请通过">
+	</end-state>
+
+	<end-state name="合同申请不通过"></end-state>
+
+
+</process-definition>

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="order" value="4" />
+		<!-- 是否登录拦截器，针对每个请求进行过滤 -->
+		<property name="interceptors">
+			<list>
+				<bean
+					class="com.infolion.platform.console.sys.LogonStateInterceptor" />
+			</list>
+		</property>
+		<property name="mappings">
+			<props>         
+				<prop key="/pickListInfoController.spr">pickListInfoController</prop>
+				<prop key="/paymentImportsInfoController.spr">paymentImportsInfoController</prop>
+                <prop key="/innerTradePayController.spr">innerTradePayController</prop>
+				<prop key="/billApplyController.spr">billApplyController</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!--进口到单管理控制器-->
+	<bean id="pickListInfoController"         
+		class="com.infolion.sapss.payment.web.PickListInfoController"
+		parent="baseMultiActionControllerXD" />
+		
+	<!--进口货物付款控制器-->	
+    <bean id="paymentImportsInfoController"         
+		class="com.infolion.sapss.payment.web.PaymentImportsInfoController"
+		parent="baseMultiActionControllerXD" />
+    <!--内贸付款控制器-->    
+    <bean id="innerTradePayController"         
+        class="com.infolion.sapss.payment.web.InnerTradePayController"
+        parent="baseMultiActionControllerXD" />        
+        	
+	<!--收款相关信息控制器-->	
+    <bean id="billApplyController"         
+		class="com.infolion.sapss.bill.web.BillApplyController"
+		parent="baseMultiActionControllerXD" />	
+</beans>

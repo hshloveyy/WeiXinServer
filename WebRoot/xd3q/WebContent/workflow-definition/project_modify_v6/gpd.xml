@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="project_modify_v6" width="911" height="702">
+  <node name="立项变更申请" x="39" y="28" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="部门经理确认" x="275" y="25" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-2" h1="91" w2="245" h2="-215"/>
+      <bendpoint w1="-124" h1="91" w2="123" h2="-215"/>
+      <bendpoint w1="-248" h1="90" w2="-1" h2="-216"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="证券部审核" x="502" y="102" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="196" h1="-1" w2="-21" h2="75"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="香港财务会计审核" x="719" y="26" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="修改变更描述" x="502" y="195" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-74" h1="-75" w2="153" h2="95"/>
+      <bendpoint w1="-169" h1="-75" w2="58" h2="95"/>
+    </edge>
+  </node>
+  <node name="贸管经理审核" x="504" y="311" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="股份公司副总审批" x="244" y="167" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="141" h1="21" w2="-119" h2="-123"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="股份公司常务副总审批" x="244" y="255" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="股份公司总经理审批" x="244" y="405" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="股份公司董事长审批" x="239" y="559" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="关联单位判断" x="506" y="23" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="金额判断2" x="247" y="333" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="99" h1="15" w2="-214" h2="-96"/>
+      <bendpoint w1="315" h1="16" w2="2" h2="-95"/>
+    </edge>
+  </node>
+  <node name="金额判断3" x="242" y="476" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="90" h1="-2" w2="-228" h2="30"/>
+      <bendpoint w1="91" h1="-34" w2="-227" h2="-2"/>
+    </edge>
+  </node>
+  <node name="变更项目状态" x="773" y="557" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="信息中心修改立项信息" x="555" y="558" width="159" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="更新项目状态" x="26" y="384" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="外贸公司综合一部经理审核" x="709" y="198" width="153" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="立项变更申请通过" x="778" y="502" width="132" height="36"/>
+  <node name="立项变更申请不通过" x="22" y="459" width="132" height="36"/>
+</root-container>

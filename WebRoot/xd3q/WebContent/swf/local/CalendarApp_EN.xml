@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LangResource language="EN">
+	<bundle name="Common">
+		<pro name="OK">OK</pro>
+		<pro name="Delete">Delete</pro>
+		<pro name="Save">Save</pro>
+		<pro name="Cancel">Cancel</pro>
+		<pro name="Add">Add</pro>
+		<pro name="View">View</pro>
+		<pro name="Edit">Edit</pro>
+		<pro name="OperateSucess">Successful operation</pro>
+	</bundle>
+	<bundle name="CalendarApp">
+		<pro name="CalList">Calendar List</pro>
+		<pro name="ConfirmDelCal" replacements="calName">Delete calendar:%calName%?</pro>
+		<pro name="InvalidDelCal" replacements="calName">Sorry,You are not the creator.Can not Delete Calendar:%calName% !</pro>
+		<pro name="InvalidEditCal" replacements="calName">Sorry,You are not the creator. Can not Edit Calendar:%calName% !</pro>
+		<pro name="InvalidEditAct" replacements="actName">Sorry,You Can not Edit Activity:%actName% !</pro>
+		<pro name="Days" description="小日历上表示星期的文本，以星期日为第一个，依序用逗号隔开">Sun,Mon,Tue,Wed,Thu,Fri,Sat</pro>
+		<pro name="Months" description="小日历上表示月份的文本，依序用逗号隔开">January,February,March,April,May,June,July,August,September,October,November,December</pro>
+		<pro name="Month">Month</pro>
+		<pro name="Week">Week</pro>
+		<pro name="Date">Date</pro>
+		<pro name="CreateCal">New Calendar</pro>
+		<pro name="EditCal">Edit Calendar</pro>
+		<pro name="CreateAct">Create Activity</pro>
+		<pro name="EditAct">Edit Activity</pro>
+		<pro name="DateText" replacements="year,month,date">%year%-%month%-%date%</pro>
+		<pro name="MonthText" replacements="year,month">%year%-%month%</pro>
+		<pro name="DaysText" replacements="year1,month1,date1,year2,month2,date2">%year1%-%month1%-%date1% ~ %year2%-%month2%-%date2%</pro>
+		<pro name="Create">Create</pro>
+		<pro name="Previous">Previous</pro>
+		<pro name="Next">Next</pro>		
+		
+		<pro name="CreateCalGroup">New Group</pro>	
+		<pro name="EidtCalGroup">Edit Group</pro>	
+		<pro name="CalLoadFail">Calendar Load Failed !</pro>
+		<pro name="NoLang" replacements="lang">Not Found Suitable Language Package:%lang%</pro>			
+	</bundle>
+	<bundle name="AddCalendarDialog">
+		<pro name="SelectCal">Select Calendar</pro>				
+	</bundle>
+	
+	<bundle name="CalActivityDialog">
+		<pro name="Content">Content</pro>				
+		<pro name="Time">Time</pro>
+		<pro name="To">to</pro>	
+		<pro name="AllDay">All Day</pro>
+		<pro name="Calendar">Calendar</pro>
+		<pro name="Desc">Description</pro>
+		<pro name="InvalidActivityTime">ActivityTimeInvalid: end time can not be earlier than start time and the minimum interval is 15 minutes! </pro>
+		<pro name="InvalidActivityDate">ActivityDateInvalid: end date can not be earlier than start date! </pro>
+		<pro name="InvalidTimeFormat">InvalidTimeFormat：Correct Format： hour:minute    （hour：0-23  minute：0-59）</pro>
+		<pro name="ActivityeSummaryNotNull">Activity Content should not be null!</pro>	
+		<pro name="Repetition">Repetition</pro>
+		<pro name="Remind">Remind</pro>	
+		<pro name="Ahead">Ahead</pro>
+		<pro name="Minutes">Minutes</pro>
+		<pro name="AddRemind">Add Remind</pro>
+		<pro name="UpdateRemind">Update Remind</pro>
+		<pro name="DeleteRemind">Delete Remind</pro>
+		<pro name="InvalidRemindTime">Invalid Remind Time! It should be a Number. Please Check!</pro>
+		
+		<pro name="ChooseBA">AssociatedBA</pro>
+		<pro name="CreateBA">New Business Activity</pro>
+		<pro name="ViewBA">View Business Activity</pro>
+		
+		<pro name="GroupTip">Group:</pro>
+		<pro name="CalendarTip">Calendar:</pro>
+		
+		<pro name="TimeTypes">Minute,Hour,Day,Week</pro>		
+		<pro name="RemindWays">Email,ShortMsg,PopWin</pro>		
+		<pro name="RepetitionTypes">Not Repeat,Every Day,Week Days,Every Week,Every Month</pro>
+		
+		<pro name="InvalidCalendar">Please Choose a Valid Calendar !</pro>
+		<pro name="InfoSave">Please save the activity first !</pro>	
+		<pro name="InfoRefresh">Not exist Associated Business Activity Currently! Please Create or Refresh the Page</pro>	
+	</bundle>	
+	
+	<bundle name="CalendarDialog">
+		<pro name="CalName">Calendar Name</pro>				
+		<pro name="Desc">Description</pro>
+		<pro name="Color">Color</pro>
+		<pro name="CalendarNameNotNull">Calendar Name should not be null</pro>
+		
+		<pro name="CalGroup">Calendar Group</pro>
+		<pro name="AssignCal">Assign Users</pro>
+		<pro name="Operate">Operate</pro>
+		<pro name="Type">Type</pro>
+		<pro name="Name">Name</pro>
+		<pro name="Privilege">Privilege</pro>
+		
+		<pro name="Add">Add</pro>
+		<pro name="Remind">Remind</pro>
+		<pro name="Edit">Edit</pro>
+		
+		<pro name="CreateCalUser">Add Calendar User</pro>
+		<pro name="Types">User,UserGroup,Role,Organization</pro>	
+	</bundle>
+	
+	<bundle name="CalendarGroupDialog">
+		<pro name="CalGroupName">Calendar Group Name</pro>				
+		<pro name="Desc">Description</pro>
+		<pro name="CalendarGroupNameNotNull">Calendar Group Name should not be null</pro>
+		<pro name="InvalidDelCalGroup" replacements="calGroupName">Can not Delete Calendar Group：%calGroupName%！There exist associated calendars.</pro>
+	</bundle>
+	
+	<bundle name="CalendarUserDialog">
+		<pro name="Type">Type</pro>	
+		<pro name="Types">User,UserGroup,Role,Organization</pro>			
+		<pro name="Name">Name</pro>
+		<pro name="Search">Search</pro>
+		<pro name="Clear">Clear</pro>
+		<pro name="Desc">Description</pro>
+		<pro name="Selected">Selected</pro>
+	</bundle>
+	
+	<bundle name="CalListDealEntry">
+		<pro name="ConfigCal">Config Calendar</pro>
+		<pro name="DeleteCal">Delete Calendar</pro>
+		<pro name="HideCal">Hide Calendar</pro>
+		<pro name="ShowCal">Show Calendar</pro>
+		<pro name="Color">Color</pro>
+	</bundle>
+	
+	<bundle name="BusinessActivityDialog">		
+		<pro name="Name">Name</pro>
+		<pro name="Desc">Description</pro>
+	</bundle>
+	
+	<bundle name="PageBar">		
+		<pro name="Pages">Pages</pro>
+	</bundle> 
+	
+	<bundle name="RemindHBox">
+		<pro name="Remind">Remind</pro>	
+		<pro name="Ahead">Ahead</pro>
+		<pro name="Minutes">Minutes</pro>
+		<pro name="AddRemind">Add Remind</pro>
+		<pro name="UpdateRemind">Update Remind</pro>
+		<pro name="DeleteRemind">Delete Remind</pro>
+		<pro name="InvalidRemindTime">Invalid Remind Time! It should be a Number. Please Check!</pro>
+		<pro name="TimeTypes">Minute,Hour,Day,Week</pro>		
+		<pro name="RemindWays">Email,ShortMsg,PopWin</pro>	
+		<pro name="InvalidRemindTime">Invalid Remind Time! It should be a Number. Please Check!</pro>
+	</bundle>
+	
+	<bundle name="DomainObjectService">
+		<pro name="InvalidDateString" replacements="dateString">Ill-Formed dateString:%dateString%</pro>
+	</bundle>
+</LangResource>

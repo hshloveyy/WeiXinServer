@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="import_invoice_v3">
+
+
+	<start-state name="进口开票申请">
+		<transition to="部门审核"></transition>
+	</start-state>
+
+
+	<task-node name="修改">
+	    <task name="修改"></task>
+	    <transition to="部门审核" name="提交部门经理"></transition>
+		<transition to="更新为审批不通过" name="作废该申请"></transition>
+	</task-node>
+
+	<task-node name="财务人员审核">
+	    <task name="财务人员审核"></task>
+		<transition to="财务经理审核" name="提交"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="财务经理审核">
+	    <task name="财务经理审核"></task>
+		<transition to="综合部人员开票，并录入票号" name="同意"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+	<node name="更新为审批通过">
+		<action class="com.infolion.sapss.workflow.bill.BillApplySucessfulActionHandler" config-type="bean"></action>
+		<transition to="结束（通过）"></transition>
+	</node>
+
+	<node name="更新为审批不通过">
+		<action class="com.infolion.sapss.workflow.bill.BillApplyFailureActionHandler" config-type="bean"></action>
+		<transition to="结束（不通过）"></transition>
+	</node>
+
+	<task-node name="综合部人员开票，并录入票号">
+	    <task name="综合部人员开票，并录入票号"></task>
+		<transition to="更新为审批通过" name="已办理完成"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="部门审核">
+		<task name="部门审核"></task>
+		<transition to="财务人员审核" name="提交财务人员"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+
+	<end-state name="结束（通过）"></end-state>
+
+	<end-state name="结束（不通过）"></end-state>
+
+
+</process-definition>

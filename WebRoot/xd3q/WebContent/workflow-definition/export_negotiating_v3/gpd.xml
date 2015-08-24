@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="export_negotiating_v3" width="1051" height="839">
+  <node name="出口押汇申请" x="40" y="30" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="部门经理确认" x="220" y="30" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="218" h1="-33" w2="-253" h2="-30"/>
+    </edge>
+  </node>
+  <node name="财务经理审核" x="452" y="34" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="财务部经办人员办理回填信息" x="453" y="293" width="128" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="更新申请单状态为通过" x="453" y="353" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="更新申请单状态为不通过" x="691" y="27" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="修改申请单" x="186" y="220" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-84" h1="-95" w2="-155" h2="93"/>
+    </edge>
+  </node>
+  <node name="信达安副总" x="452" y="221" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="信达安贸管部" x="452" y="127" width="132" height="36"/>
+  <node name="审批不通过" x="691" y="138" width="132" height="36"/>
+  <node name="审批通过" x="284" y="363" width="132" height="36"/>
+</root-container>

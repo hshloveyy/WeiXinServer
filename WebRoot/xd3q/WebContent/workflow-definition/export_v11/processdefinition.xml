@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="export_v11">
+
+
+	<start-state name="出口货物通知单申请">
+		<transition to="部门经理确认" name="提交部门经理"></transition>
+	</start-state>
+
+
+	<task-node name="贸管审单员审核">
+	    <task name="贸管审单员审核"></task>
+	    <transition to="更新核销单号，修改通知单状态" name="确认"></transition>
+		<transition to="业务修改申请单" name="退回业务修改"></transition>
+	</task-node>
+
+	<task-node name="部门经理确认">
+	    <task name="部门经理确认"></task>
+		<transition to="贸管审单员审核" name="确认提交"></transition>
+		<transition to="业务修改申请单" name="退回业务修改"></transition>
+	</task-node>
+
+	<task-node name="业务修改申请单">
+	    <task name="业务修改申请单"></task>
+		<transition to="部门经理确认" name="提交部门经理确认"></transition>
+		<transition to="更新通知单状态" name="作废"></transition>
+	</task-node>
+
+	<node name="更新核销单号，修改通知单状态">
+		<action class="com.infolion.sapss.workflow.ship.ExportNoteSucessfulActionHandler" config-type="bean"></action>
+		<transition to="出口货物通知单申请通过"></transition>
+	</node>
+
+	<node name="更新通知单状态">
+		<action class="com.infolion.sapss.workflow.ship.ExportNoteFaileActionHandler" config-type="bean"></action>
+		<transition to="出口货物通知单申请不通过"></transition>
+	</node>
+
+
+	<end-state name="出口货物通知单申请通过"></end-state>
+
+	<end-state name="出口货物通知单申请不通过"></end-state>
+
+
+</process-definition>

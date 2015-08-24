@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="foreign_trade_pay_v1" width="969" height="831">
+  <node name="外贸货款申请" x="19" y="36" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="部门经理确认" x="174" y="35" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="部门会计审核" x="641" y="32" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="外贸财务经理审核" x="836" y="33" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="资金部经理审核" x="621" y="137" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="金额判断" x="836" y="137" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="贸管审单员审核" x="622" y="219" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="贸管经理审核" x="300" y="220" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="196" h1="71" w2="-174" h2="-17"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-50" h1="63" w2="168" h2="-63"/>
+    </edge>
+  </node>
+  <node name="股份公司副总审批" x="82" y="346" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="154" h1="-39" w2="-434" h2="-1"/>
+    </edge>
+  </node>
+  <node name="金额判断2" x="87" y="444" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="股份公司常务副总审批" x="435" y="348" width="158" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="30" h1="-25" w2="-192" h2="15"/>
+    </edge>
+  </node>
+  <node name="金额判断3" x="636" y="425" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-4" h1="-29" w2="-173" h2="-44"/>
+      <bendpoint w1="167" h1="-26" w2="-2" h2="-41"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="12" h1="53" w2="-158" h2="-66"/>
+    </edge>
+  </node>
+  <node name="股份公司总经理审批" x="349" y="443" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="股份公司董事长审批" x="805" y="440" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="1" h1="63" w2="0" h2="-41"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-98" h1="-65" w2="407" h2="155"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-2" h1="-84" w2="133" h2="48"/>
+    </edge>
+  </node>
+  <node name="修改申请单" x="425" y="136" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-198" h1="-2" w2="1" h2="99"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="3" h1="101" w2="-242" h2="-71"/>
+    </edge>
+  </node>
+  <node name="股份机要室人员审核" x="181" y="547" width="142" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="出纳审核" x="328" y="626" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="更新状态为审批通过" x="44" y="681" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="更新状态为审批不通过" x="670" y="308" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="金额判断1" x="85" y="220" width="128" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="4" h1="38" w2="-719" h2="-286"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-57" h1="63" w2="-56" h2="-63"/>
+    </edge>
+  </node>
+  <node name="业务类型判断" x="806" y="544" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="填写核销单" x="741" y="652" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="出纳确认" x="804" y="790" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="机要室确认" x="568" y="790" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="资金部人员确认并填写到期日" x="29" y="789" width="162" height="41">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="是否金属部" x="334" y="33" width="127" height="38">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="150" h1="-36" w2="-160" h2="-34"/>
+    </edge>
+  </node>
+  <node name="综合一部经理审批" x="482" y="32" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="股份机要室确认部分付款" x="339" y="546" width="114" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="62" h1="38" w2="111" h2="-29"/>
+    </edge>
+  </node>
+  <node name="是否超过100万CNY" x="573" y="655" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="资金部经理确认（超过100万）" x="421" y="721" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="特殊帐号处理" x="574" y="554" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="上海信达诺财务付款" x="252" y="704" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="结束（审批通过）" x="19" y="603" width="132" height="36"/>
+  <node name="结束（审批不通过）" x="784" y="237" width="132" height="36"/>
+</root-container>

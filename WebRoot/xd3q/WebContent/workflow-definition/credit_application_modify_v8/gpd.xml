@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="credit_application_modify_v8" width="1278" height="675">
+  <node name="信用证变更申请" x="145" y="15" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="修改填写开证申请表及预保" x="424" y="158" width="166" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="6" h1="-133" w2="420" h2="-150"/>
+    </edge>
+  </node>
+  <node name="财务经理审核" x="703" y="93" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-121" h1="-53" w2="142" h2="-64"/>
+    </edge>
+  </node>
+  <node name="贸管审单员审核" x="705" y="307" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="贸管经理审核" x="704" y="413" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-76" h1="-60" w2="-74" h2="41"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="股份副总兼外贸公司总经理审批" x="710" y="522" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-373" h1="68" w2="307" h2="379"/>
+      <bendpoint w1="-569" h1="70" w2="114" h2="417"/>
+      <bendpoint w1="-570" h1="-354" w2="113" h2="-7"/>
+    </edge>
+  </node>
+  <node name="股份公司常务副总审批" x="236" y="391" width="157" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-106" h1="1" w2="118" h2="281"/>
+      <bendpoint w1="-105" h1="-220" w2="116" h2="-4"/>
+    </edge>
+  </node>
+  <node name="股份公司总经理审批" x="243" y="272" width="148" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-108" h1="-1" w2="116" h2="96"/>
+      <bendpoint w1="-107" h1="-99" w2="117" h2="-2"/>
+    </edge>
+  </node>
+  <node name="股份公司董事长审批" x="241" y="94" width="151" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-110" h1="0" w2="117" h2="-80"/>
+      <bendpoint w1="-109" h1="37" w2="114" h2="-44"/>
+      <bendpoint w1="-109" h1="76" w2="118" h2="-4"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="金额判断" x="249" y="534" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="金额判断1" x="251" y="186" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="更新信用证状态为改证申请不通过" x="10" y="175" width="167" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="更新信用证状态为改证通过" x="437" y="374" width="167" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="金额判断2" x="560" y="458" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="芜湖信达贸易总经理审核" x="694" y="159" width="151" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="财务会计审核" x="705" y="16" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="资金部经理审核" x="704" y="229" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="信用证变更不通过" x="32" y="292" width="132" height="36"/>
+  <node name="信用证变更通过" x="418" y="472" width="132" height="36"/>
+</root-container>

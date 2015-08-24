@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LangResource language="ZH">
+	<bundle name="Common">
+		<pro name="OK">确定</pro>
+		<pro name="Delete">删除</pro>
+		<pro name="Save">保存</pro>
+		<pro name="Cancel">取消</pro>
+	</bundle>
+	<bundle name="MSG">
+		<pro name="Info">消息</pro>
+		<pro name="Warn">警告</pro>
+		<pro name="Error">错误</pro>
+		<pro name="UnknowMsg" replacements="content">系统返回未知的消息:%content%</pro>
+	</bundle>
+	<bundle name="WorkFlow">
+		<pro name="NameOrPointNotSpec">流程名或版本未指定</pro>
+		<pro name="TempV">临时版</pro>
+		<pro name="Version" replacements="ver">第%ver%版</pro>
+		<pro name="parseError1">无法加载流程图，流程定义文件或坐标定义文件缺失</pro>
+		<pro name="parseError2">流程定义文件不符合格式</pro>
+		<pro name="parseError3">坐标定义文件不符合格式</pro>
+		<pro name="parseError4">流程名不能为空</pro>
+		<pro name="parseError5">"流程定义文件与坐标定义文件的流程名不相同</pro>
+		<pro name="AddCom">添加控件</pro>
+		<pro name="AttDlg">属性对话框</pro>
+		<pro name="WorkFlowTitle" replacements="name">流程图:%name%</pro>
+		<pro name="NoParrentProcess">已经是根流程,不存在父流程!</pro>
+		<pro name="NoSubProcessInfo">查找不到该子流程的相关信息!</pro>
+	</bundle>
+	<bundle name="Components">
+		<pro name="icoSelect">选择</pro>
+		<pro name="icoStart">开始</pro>
+		<pro name="icoEnd">结束</pro>
+		<pro name="icoFork">分支</pro>
+		<pro name="icoJoin">汇聚</pro>
+		<pro name="icoTask">任务</pro>
+		<pro name="icoAuto">节点</pro>
+		<pro name="icoDecision">判断</pro>
+		<pro name="icoMail">邮件</pro>
+		<pro name="icoProcess">子流程</pro>
+		<pro name="icoArrow">连接</pro>
+		<pro name="EventClass">事件处理类</pro>
+		<pro name="EventExpress">事件表达式</pro>
+		<pro name="EventScript">事件脚本</pro>
+		<pro name="Name">名称</pro>
+		<pro name="Desc">描述</pro>
+		<pro name="EventType">事件类型</pro>
+		<pro name="EventContentType">事件内容类型</pro>
+		<pro name="ActClassName">动作关联类</pro>
+		<pro name="ActExpression">动作表达式</pro>
+		<pro name="ActName">动作名称</pro>
+		<pro name="ActType">动作类型</pro>
+		<pro name="DeciExpression">判断表达式</pro>
+		<pro name="DeciDelegation">判断关联类</pro>
+		<pro name="DeciHandler">判断类型</pro>
+		<pro name="MailDestination">Email地址</pro>
+		<pro name="MailSubject">主题</pro>
+		<pro name="MailBody">内容</pro>
+		<pro name="SubprocessName">子流程名</pro>
+		<pro name="SubprocessVersion">版本</pro>
+		<pro name="TaskName">任务名称</pro>
+		<pro name="TaskDesc">任务描述</pro>
+		<pro name="TaskClassName">任务关联类</pro>
+		<pro name="NodeName">结点名称</pro>
+		<pro name="ProcessName">流程名称</pro>
+		<pro name="CreateProcess">创建流程</pro>
+		<pro name="Release">发布</pro>
+		<pro name="Save">保存</pro>
+		<pro name="Empty">清空</pro>
+		<pro name="Reload">重新加载</pro>
+		<pro name="CanNotUpdateProcess">查看模式下无法编辑或保存流程图！</pro>
+		<pro name="ParentProcess">查看父流程</pro>
+		<pro name="Edit">编辑</pro>
+		<pro name="CreateSubProcess">添加子流程</pro>
+	</bundle>
+	
+	<bundle name="SubProcessDialog">			
+		<pro name="Name">流程名称</pro>
+		<pro name="Search">查询</pro>
+		<pro name="Clear">清空</pro>
+		<pro name="Desc">流程描述</pro>
+	</bundle>
+	
+	<bundle name="PageBar">		
+		<pro name="Pages">页数</pro>
+	</bundle> 
+</LangResource>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="contract_sales_modify_v12">
+
+
+	<start-state name="合同变更申请">
+		<transition to="部门经理确认" name="提交部门经理"></transition>
+	</start-state>
+
+
+	<task-node name="部门经理确认">
+		<task name="部门经理确认"></task>
+		<transition to="信息中心冻结订单" name="确认提交"></transition>
+		<transition to="信息中心判断是否需要修改和解冻合同" name="不提交"></transition>
+		<transition to="信息中心修改订单和合同信息" name="直接修改SAP订单"></transition>
+		<transition to="修改变更描述" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="贸管经理审核">
+		<task name="贸管经理审核"></task>
+		<transition to="股份副总兼外贸公司总经理审批" name="提交股份公司副总审批"></transition>
+		<transition to="信息中心解冻订单并修改订单和合同信息" name="同意变更"></transition>
+		<transition to="修改变更描述" name="退回业务"></transition>
+	</task-node>
+
+	<task-node name="财务会计审核">
+		<task name="财务会计审核"></task>
+		<transition to="财务经理审核" name="确认"></transition>
+		<transition to="修改变更描述" name="退回业务"></transition>
+	</task-node>
+
+	<task-node name="股份副总兼外贸公司总经理审批">
+		<task name="股份副总兼外贸公司总经理审批"></task>
+		<transition to="金额判断2" name="同意"></transition>
+		<transition to="贸管经理审核" name="退回贸管经理审核"></transition>
+		<transition to="信息中心判断是否需要修改和解冻合同" name="不同意变更"></transition>
+	</task-node>
+
+	<task-node name="股份公司常务副总审批">
+		<task name="股份公司常务副总审批"></task>
+		<transition to="股份公司总经理审批" name="同意变更"></transition>
+		<transition to="贸管经理审核" name="退回贸管审核"></transition>
+		<transition to="信息中心判断是否需要修改和解冻合同" name="不同意变更"></transition>
+	</task-node>
+
+	<task-node name="股份公司总经理审批">
+		<task name="股份公司总经理审批"></task>
+		<transition to="金额判断3" name="同意变更"></transition>
+		<transition to="贸管经理审核" name="退回贸管审核"></transition>
+		<transition to="信息中心判断是否需要修改和解冻合同" name="不同意变更"></transition>
+	</task-node>
+
+	<task-node name="股份公司董事长审批">
+		<task name="股份公司董事长审批"></task>
+		<transition to="信息中心解冻订单并修改订单和合同信息" name="通同意变更"></transition>
+		<transition to="贸管经理审核" name="退回贸管审核"></transition>
+		<transition to="信息中心判断是否需要修改和解冻合同" name="不同意变更"></transition>
+	</task-node>
+
+	<task-node name="修改变更描述">
+		<task name="修改变更描述"></task>
+		<transition to="部门经理确认" name="提交部门经理"></transition>
+	</task-node>
+
+	<task-node name="信息中心修改订单和合同信息">
+		<task name="信息中心修改订单和合同信息"></task>
+		<transition to="更新订单状态3" name="确认已修改完成"></transition>
+	</task-node>
+
+	<node name="更新订单状态1">
+		<action class="com.infolion.sapss.workflow.sales.ProcessChangeSucessfulActionHandler"></action>
+		<transition to="合同变更申请通过"></transition>
+	</node>
+
+	<node name="更新订单状态2">
+		<action class="com.infolion.sapss.workflow.sales.ProcessChangeFailureActionHandler"></action>
+		<transition to="合同变更申请不通过"></transition>
+	</node>
+
+	<node name="更新订单状态3">
+		<action class="com.infolion.sapss.workflow.sales.ProcessChangeNoExamineActionHandler"></action>
+		<transition to="合同变更申请通过（未经领导审批）"></transition>
+	</node>
+
+	
+	<decision name="金额判断2">
+		<handler config-type="bean" class="com.infolion.sapss.workflow.decision.Price2JudgeDecisionHandler"></handler>
+		<transition to="信息中心解冻订单并修改订单和合同信息" name="金额小于100万美金或700万人民币">
+		</transition>
+		<transition to="股份公司常务副总审批" name="金额大于100万美金或700万人民币"></transition>
+	</decision>
+
+	<decision name="金额判断3">
+		<handler config-type="bean" class="com.infolion.sapss.workflow.decision.Price3JudgeDecisionHandler"></handler>
+		<transition to="股份公司董事长审批" name="金额大于200万美金或1400万人民币">
+		</transition>
+		<transition to="信息中心解冻订单并修改订单和合同信息" name="金额小于200万美金或1400万人民币">
+		</transition>
+	</decision>
+
+	<task-node name="信息中心冻结订单">
+	    <task name="信息中心冻结订单"></task>
+		<transition to="关联交易判断" name="订单已冻结"></transition>
+	</task-node>
+
+	<task-node name="信息中心解冻订单并修改订单和合同信息">
+	    <task name="信息中心解冻订单并修改订单和合同信息"></task>
+		<transition to="更新订单状态1" name="确认执行相关操作"></transition>
+	</task-node>
+
+	<task-node name="信息中心判断是否需要修改和解冻合同">
+	    <task name="信息中心判断是否需要修改和解冻合同"></task>
+		<transition to="更新订单状态2" name="确认执行相关操作"></transition>
+	</task-node>
+
+	<task-node name="财务经理审核">
+	    <task name="财务经理审核"></task>
+		<transition to="新加坡业务主管审核" name="同意"></transition>
+		<transition to="修改变更描述" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="新加坡业务主管审核">
+	    <task name="新加坡业务主管审核"></task>
+		<transition to="资金部经理审核" name="同意"></transition>
+		<transition to="修改变更描述" name="退回修改变更"></transition>
+	</task-node>
+
+    <decision name="关联交易判断">
+        <handler config-type="bean" class="com.infolion.sapss.workflow.payment.IsRelationDecisionHandler"></handler>
+		<transition to="证券事业部审核" name="关联交易"></transition>
+		<transition to="财务会计审核" name="非关联交易"></transition>
+	</decision>
+
+	<task-node name="证券事业部审核">
+	    <task name="证券事业部审核"></task>
+		<transition to="财务会计审核" name="确认"></transition>
+		<transition to="修改变更描述" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="资金部经理审核">
+	    <task name="资金部经理审核"></task>
+		<transition to="贸管经理审核" name="同意"></transition>
+		<transition to="修改变更描述" name="退回"></transition>
+	</task-node>
+
+
+	<end-state name="合同变更申请通过"></end-state>
+
+	<end-state name="合同变更申请不通过"></end-state>
+
+	<end-state name="合同变更申请通过（未经领导审批）"></end-state>
+
+
+</process-definition>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="credit_receive_modify_v6">
+
+
+	<start-state name="贸管人员信用证收证修改">
+		<transition to="信用证改证复核" name="确认提交"></transition>
+	</start-state>
+
+
+	<task-node name="信用证改证复核">
+	    <task name="信用证改证复核"></task>
+	    <transition to="业务人员确认，提出意见" name="提交业务人员"></transition>
+		<transition to="信用证收证修改" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="业务人员确认，提出意见">
+	    <task name="业务人员确认，提出意见"></task>
+		<transition to="贸管人员更改信用证状态" name="提交贸管"></transition>
+	</task-node>
+
+	<task-node name="贸管人员更改信用证状态">
+	    <task name="贸管人员更改信用证状态"></task>
+		<transition to="更新信用证状态" name="状态已更新"></transition>
+	</task-node>
+
+	<node name="更新信用证状态">
+		<action class="com.infolion.sapss.workflow.credit.CreditArriveHisProcessSucessfulActionHandler" config-type="bean"></action>
+		<transition to="信用证收证结束"></transition>
+	</node>
+
+	<task-node name="信用证收证修改">
+	    <task name="信用证收证修改"></task>
+		<transition to="信用证改证复核" name="已修改完，提交复核"></transition>
+	</task-node>
+
+
+	<end-state name="信用证收证结束"></end-state>
+
+
+</process-definition>

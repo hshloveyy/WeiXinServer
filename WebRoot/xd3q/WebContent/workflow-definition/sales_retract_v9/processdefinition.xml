@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="sales_retract_v9">
+
+
+	<start-state name="销售退货申请">
+		<transition to="部门经理确认"></transition>
+	</start-state>
+
+
+	<task-node name="部门经理确认">
+	    <task name="部门经理确认"></task>
+		<transition to="香港财务会计审核" name="确认提交"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="香港财务会计审核">
+	    <task name="香港财务会计审核"></task>
+		<transition to="外贸综合一部经理审核" name="提交外贸综合一部经理审核"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="贸管经理审核">
+	    <task name="贸管经理审核"></task>
+		<transition to="股份公司副总审批" name="提交股份公司副总审批"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="股份公司副总审批">
+	    <task name="股份公司副总审批"></task>
+		<transition to="股份公司常务副总审批" name="提交股份公司常务副总审批"></transition>
+		<transition to="贸管经理审核" name="退回贸管经理审核"></transition>
+		<transition to="更新退货申请为不通过" name="不同意退货"></transition>
+	</task-node>
+
+	<task-node name="股份公司常务副总审批">
+	    <task name="股份公司常务副总审批"></task>
+		<transition to="金额判断" name="同意退货"></transition>
+		<transition to="贸管经理审核" name="退回贸管经理审核"></transition>
+		<transition to="更新退货申请为不通过" name="不同意退货"></transition>
+	</task-node>
+
+	<task-node name="股份公司总经理审批">
+	    <task name="股份公司总经理审批"></task>
+		<transition to="金额判断1" name="同意退货"></transition>
+		<transition to="贸管经理审核" name="退回贸管经理审核"></transition>
+		<transition to="更新退货申请为不通过" name="不同意退货"></transition>
+	</task-node>
+
+	<task-node name="股份公司董事长审批">
+	    <task name="股份公司董事长审批"></task>
+	    <transition to="是否开票" name="同意退货"></transition>
+		<transition to="贸管经理审核" name="退回贸管经理审核"></transition>
+		<transition to="更新退货申请为不通过" name="不同意"></transition>
+	</task-node>
+
+	<task-node name="修改">
+	    <task name="修改"></task>
+		<transition to="部门经理确认" name="提交部门经理"></transition>
+	</task-node>
+
+	<decision name="金额判断">
+		<handler config-type="bean"  class="com.infolion.sapss.workflow.salesReturn.SalesReturnAmount01DecisionHandler"></handler>	
+		<transition to="股份公司总经理审批" name="金额大于100USD或700万CNY"></transition>
+		<transition to="是否开票" name="金额小于100USD或700万CNY"></transition>
+	</decision>
+
+	<decision name="金额判断1">
+		<handler config-type="bean"  class="com.infolion.sapss.workflow.salesReturn.SalesReturnAmount02DecisionHandler"></handler>	
+		<transition to="股份公司董事长审批" name="金额大于200万USD或1400万CNY"></transition>
+		<transition to="是否开票" name="金额小于200万USD或1400万CNY"></transition>
+	</decision>
+
+	<node name="更新退货申请为不通过">
+		<action class="com.infolion.sapss.workflow.salesReturn.SalesReturnProcessFailureActionHandler"></action>	
+		<transition to="退回申请不通过"></transition>
+	</node>
+
+	<node name="更新退货申请通过">
+		<action class="com.infolion.sapss.workflow.salesReturn.SalesReturnProcessSuccessActionHandler"></action>	
+		<transition to="退货申请通过"></transition>
+	</node>
+
+	<task-node name="综合部处理退货收货">
+	    <task name="综合部处理退货收货"></task>
+		<transition to="是否开票1" name="已处理完退货收货"></transition>
+	</task-node>
+
+	<task-node name="信息中心创建退货订单">
+	    <task name="信息中心创建退货订单"></task>
+		<transition to="综合部处理退货收货" name="已创建完退货订单"></transition>
+	</task-node>
+
+	<task-node name="综合部处理开票">
+	    <task name="综合部处理开票"></task>
+		<transition to="更新退货申请通过" name="已处理完退货开票"></transition>
+	</task-node>
+
+	<decision name="是否开票">
+		<handler config-type="bean"  class="com.infolion.sapss.workflow.salesReturn.SalesReturnType01DecisionHandler"></handler>	
+		<transition to="综合部处理退货收货" name="否"></transition>
+		<transition to="信息中心创建退货订单" name="是"></transition>
+	</decision>
+
+	<decision name="是否开票1">
+		<handler config-type="bean"  class="com.infolion.sapss.workflow.salesReturn.SalesReturnType02DecisionHandler"></handler>	
+		<transition to="综合部处理开票" name="是"></transition>
+		<transition to="更新退货申请通过" name="否"></transition>
+	</decision>
+
+	<task-node name="外贸综合一部经理审核">
+	    <task name="外贸综合一部经理审核"></task>
+		<transition to="贸管经理审核" name="提交股份贸管经理审核"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+
+	<end-state name="退回申请不通过"></end-state>
+
+	<end-state name="退货申请通过"></end-state>
+
+
+</process-definition>

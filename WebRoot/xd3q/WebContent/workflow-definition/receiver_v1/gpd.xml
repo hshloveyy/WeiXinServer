@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<root-container name="receiver_v1" width="1051" height="839">
+  <node name="收款信息确认申请" x="45" y="51" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="财务会计审核" x="311" y="50" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="45" h1="58" w2="45" h2="-55"/>
+    </edge>
+  </node>
+  <node name="修改" x="311" y="163" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+      <bendpoint w1="-54" h1="-57" w2="-54" h2="56"/>
+    </edge>
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="更新通过" x="48" y="257" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="更新不通过" x="312" y="259" width="132" height="36">
+    <edge>
+      <label x="5" y="-10"/>
+    </edge>
+  </node>
+  <node name="结束（通过）" x="48" y="378" width="132" height="36"/>
+  <node name="结束（不通过）" x="312" y="377" width="132" height="36"/>
+</root-container>

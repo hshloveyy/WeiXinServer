@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<process-definition  xmlns=""  name="storage_scrap_v1">
+
+
+	<start-state name="库存报废申请">
+		<transition to="部门经理确认"></transition>
+	</start-state>
+
+
+	<task-node name="综合一部审核是否在库存">
+	    <task name="综合一部审核是否在库存"></task>
+		<transition to="财务会计审核" name="在库存，提交财务部审核"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="财务经理审核金额">
+	    <task name="财务经理审核金额"></task>
+		<transition to="股份公司副总经理审核" name="提交股份公司副总审核"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="股份公司总经理审核">
+	    <task name="股份公司总经理审核"></task>
+		<transition to="金额判断2" name="同意报废"></transition>
+		<transition to="更新为审批不通过" name="不同意"></transition>
+	</task-node>
+
+	<task-node name="股份公司常务副总审核">
+	    <task name="股份公司常务副总审核"></task>
+		<transition to="金额判断1" name="同意报废"></transition>
+		<transition to="更新为审批不通过" name="不同意报废"></transition>
+	</task-node>
+
+	<task-node name="股份公司副总经理审核">
+	    <task name="股份公司副总经理审核"></task>
+		<transition to="股份公司常务副总审核" name="提交股份公司常务副总审核"></transition>
+		<transition to="更新为审批不通过" name="不同意报废"></transition>
+	</task-node>
+
+	<task-node name="股份公司董事长审核">
+	    <task name="股份公司董事长审核"></task>
+		<transition to="综合一部处理报废" name="同意报废"></transition>
+		<transition to="更新为审批不通过" name="不同意报废"></transition>
+	</task-node>
+
+	<task-node name="修改">
+	    <task name="修改"></task>
+		<transition to="部门经理确认" name="提交部门经理"></transition>
+	</task-node>
+
+	<decision name="金额判断1">
+		<handler config-type="bean"  class="com.infolion.sapss.workflow.scrapped.ScrappedAmount10DecisionHandler"></handler>
+		<transition to="股份公司总经理审核" name="金额大于10万CNY"></transition>
+		<transition to="综合一部处理报废" name="金额小于10万CNY"></transition>
+	</decision>
+
+	<decision name="金额判断2">
+		<handler config-type="bean"  class="com.infolion.sapss.workflow.scrapped.ScrappedAmount100DecisionHandler"></handler>
+		<transition to="股份公司董事长审核" name="金额大于100万CNY"></transition>
+		<transition to="综合一部处理报废" name="金额小于100万CNY"></transition>
+	</decision>
+
+	<node name="更新为审批通过">
+		<action class="com.infolion.sapss.workflow.scrapped.ScrappedProcessSuccessActionHandler"></action>
+		<transition to="结束（通过）"></transition>
+	</node>
+
+	<node name="更新为审批不通过">
+		<action class="com.infolion.sapss.workflow.scrapped.ScrappedProcessFailureActionHandler"></action>
+		<transition to="结束（不通过）"></transition>
+	</node>
+
+	<task-node name="综合一部处理报废">
+		 <task name="综合一部处理报废"></task>
+		<transition to="更新为审批通过" name="已在SAP处理报废"></transition>
+	</task-node>
+
+	<task-node name="部门经理确认">
+	    <task name="部门经理确认"></task>
+		<transition to="综合一部审核是否在库存" name="确认提交"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+	<task-node name="财务会计审核">
+	    <task name="财务会计审核"></task>
+		<transition to="财务经理审核金额" name="确认"></transition>
+		<transition to="修改" name="退回修改"></transition>
+	</task-node>
+
+
+	<end-state name="结束（不通过）"></end-state>
+
+	<end-state name="结束（通过）"></end-state>
+
+
+</process-definition>

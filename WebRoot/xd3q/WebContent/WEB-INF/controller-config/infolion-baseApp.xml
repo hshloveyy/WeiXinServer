@@ -1,0 +1,213 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+
+	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="order" value="2" />
+		<property name="interceptors">
+			<list>
+				<bean
+					class="com.infolion.platform.basicApp.authManage.MethodAuthenticationInterceptor" />
+			</list>
+		</property>
+		<property name="mappings">
+			<props>
+                <prop key="/index/favoritesController.spr">favoritesController</prop>
+                <prop key="/index/indexMainController.spr">indexMainController</prop>
+                
+				<prop key="/authManage/userLoginController.spr">userLoginController</prop>
+				<prop key="/basicApp/authManage/roleController.spr">roleController</prop>
+				<prop key="/basicApp/authManage/menuController.spr">menuController</prop>
+                <prop key="/basicApp/authManage/authResourceController.spr">authResourceController</prop>
+                <prop key="/basicApp/authManage/organizationController.spr">organizationController</prop>
+                <prop key="/basicApp/authManage/userController.spr">userController</prop>
+                <prop key="/basicApp/authManage/userGroupController.spr">userGroupController</prop>
+                <prop key="/platform/basicApp/authManage/personnelController.spr">personnelController</prop>
+                
+                <prop key="/workflow/boProcessDefinitionController.spr">boProcessDefinitionController</prop>
+                <prop key="/workflow/extProcessDefinitionController.spr">extProcessDefinitionController</prop>
+                <prop key="/workflow/deployWorkflowController.spr">deployWorkflowController</prop>
+                <prop key="/workflow/extNodeDefinitionController.spr">extNodeDefinitionController</prop>
+                <prop key="/workflow/taskActorController.spr">taskActorController</prop>
+                <prop key="/workflow/taskAuthenticationController.spr">taskAuthenticationController</prop>
+                <prop key="/platform/workflow/manager/processDefinitionController.spr">processDefinitionController</prop>
+				<prop key="/basicApp/workbench/workbenchController.spr">workbenchController</prop>
+				<prop key="/basicApp/workbench/userMessage/userMessageController.spr">userMessageController</prop>
+				<prop key="/basicApp/workbench/userMessage/trashBoxController.spr">trashBoxController</prop>
+				<prop key="/basicApp/workbench/task/taskController.spr">taskController</prop>
+				<prop key="/basicApp/client/clientController.spr">clientController</prop>
+				<prop key="/basicApp/sysConsole/cacheManage/cacheManageController.spr">cacheManageController</prop>
+                
+                <prop key="/codeGenerator/codeGenerateController.spr">codeGenerateController</prop>
+                <prop key="/codeGenerator/UIEditorController.spr">UIEditorController</prop>
+                <prop key="/platform/dpframework/uicomponent/lock/lockListController.spr">lockListController</prop>
+                <prop key="/platform/basicApp/sysConsole/userOnline/sessionLogController.spr">sessionLogController</prop>
+                <prop key="/platform/dpframework/dataTransfers/dataTransferController.spr">dataTransferController</prop>
+                <prop key="/platform/basicApp/sysConsole/userOnline/onlineUserController.spr">onlineUserController</prop>
+                <prop key="/platform/basicApp/sysConsole/portlet/communityController.spr">communityController</prop>
+                <prop key="/platform/basicApp/sysConsole/portlet/portletController.spr">portletController</prop>
+			    
+                <prop key="/platform/basicApp/sysConsole/dictionary/sapDictController.spr">sapDictController</prop>
+                <prop key="/platform/basicApp/sysConsole/dictionary/sapDictDetailController.spr">sapDictDetailController</prop>
+                <prop key="/platform/basicApp/authManage/positionController.spr">positionController</prop>
+                <prop key="/platform/basicApp/authManage/postController.spr">postController</prop>
+           </props>
+		</property>
+	</bean>
+
+    <!-- SAP domain-->
+    <bean id="sapDictController"
+        class="com.infolion.platform.basicApp.sysConsole.dictionary.web.SapDictController"
+        parent="baseMultiActionController" />
+    <bean id="sapDictDetailController"
+        class="com.infolion.platform.basicApp.sysConsole.dictionary.web.SapDictDetailController"
+        parent="baseMultiActionController" />
+
+	<!-- 社区管理 -->
+	<bean id="communityController"
+		class="com.infolion.platform.basicApp.sysConsole.portlet.web.CommunityController"
+		parent="baseMultiActionController" />
+		
+	<!-- Portlet容器 -->
+	<bean id="portletController"
+		class="com.infolion.platform.basicApp.sysConsole.portlet.web.PortletController"
+		parent="baseMultiActionController" />
+				
+	<!-- 登录控制器 -->
+	<bean id="userLoginController"
+		class="com.infolion.platform.basicApp.authManage.web.UserLoginController"
+		parent="baseMultiActionController" />
+		
+	<!-- 角色控制器 -->
+	<bean id="roleController"
+		class="com.infolion.platform.basicApp.authManage.web.RoleController"
+		parent="baseMultiActionController" />
+		
+	<!-- 菜单控制器 -->
+	<bean id="menuController"
+		class="com.infolion.platform.basicApp.authManage.web.MenuController"
+		parent="baseMultiActionController" />
+		
+	<!-- 流程定义控制器 -->
+	<bean id="boProcessDefinitionController"
+		class="com.infolion.platform.workflow.manager.web.BoProcessDefinitionController"
+		parent="baseMultiActionController" />
+	<!-- 流程定义控制器 -->
+	<bean id="deployWorkflowController"
+		class="com.infolion.platform.workflow.manager.web.DeployWorkflowController"
+		parent="baseMultiActionController" />
+	<!-- 流程节点配置控制器 -->
+	<bean id="extProcessDefinitionController"
+		class="com.infolion.platform.workflow.manager.web.ExtProcessDefinitionController"
+		parent="baseMultiActionController" />
+	<!-- 流程节点逻辑配置控制器 -->
+	<bean id="extNodeDefinitionController"
+		class="com.infolion.platform.workflow.manager.web.ExtNodeDefinitionController"
+		parent="baseMultiActionController" />
+	<!-- 流程节点人员分配控制器 -->
+	<bean id="taskActorController"
+		class="com.infolion.platform.workflow.manager.web.TaskActorController"
+		parent="baseMultiActionController" />
+	<!-- 流程节点人员分配控制器 -->
+	<bean id="taskAuthenticationController"
+		class="com.infolion.platform.workflow.manager.web.TaskAuthenticationController"
+		parent="baseMultiActionController" />
+	<!-- 流程建模控制器-->
+	<bean id="processDefinitionController"
+		class="com.infolion.platform.workflow.manager.web.ProcessDefinitionController"
+		parent="baseMultiActionController" />
+
+	<!-- 工作台控制器 -->
+	<bean id="workbenchController"
+		class="com.infolion.platform.basicApp.sysConsole.workbench.web.WorkbenchController"
+		parent="baseMultiActionController" />
+	<!-- 工作台——用户消息控制器 -->
+	<bean id="userMessageController"
+		class="com.infolion.platform.basicApp.sysConsole.workbench.userMessage.web.UserMessageController"
+		parent="baseMultiActionController" />
+	<!-- 工作台——用户消息废件箱控制器 -->
+	<bean id="trashBoxController"
+		class="com.infolion.platform.basicApp.sysConsole.workbench.userMessage.web.TrashBoxController"
+		parent="baseMultiActionController" />
+	<!-- 工作台——用户待办事项 -->
+	<bean id="taskController"
+		class="com.infolion.platform.basicApp.sysConsole.workbench.task.web.TaskController"
+		parent="baseMultiActionController" />
+		
+	<!-- 系统管理——客户端管理 -->
+	<bean id="clientController"
+		class="com.infolion.platform.basicApp.sysConsole.client.web.ClientController"
+		parent="baseMultiActionController" />
+
+	<!--首页-收藏夹控制器-->
+	<bean id="favoritesController"
+		class="com.infolion.platform.basicApp.index.web.FavoritesController"
+		parent="baseMultiActionController" />
+	<!-- 首页控制器 -->
+	<bean id="indexMainController"
+		class="com.infolion.platform.basicApp.index.web.IndexMainController"
+		parent="baseMultiActionController" />
+    <!-- 权限资源控制器 -->
+    <bean id="authResourceController"
+        class="com.infolion.platform.basicApp.authManage.web.AuthResourceController"
+        parent="baseMultiActionController" />
+    <!-- 组织控制器 -->
+    <bean id="organizationController"
+        class="com.infolion.platform.basicApp.authManage.web.OrganizationController"
+        parent="baseMultiActionController" />        
+    <!-- 用户控制器 -->
+    <bean id="userController"
+    class="com.infolion.platform.basicApp.authManage.web.UserController"
+    parent="baseMultiActionController" />
+    <!-- 用户组控制器 -->
+    <bean id="userGroupController"
+    class="com.infolion.platform.basicApp.authManage.web.UserGroupController"
+    parent="baseMultiActionController" />
+    <!-- 人员控制器 -->
+    <bean id="personnelController"
+    class="com.infolion.platform.basicApp.authManage.web.PersonnelController"
+    parent="baseMultiActionController" />
+    <!-- 地址控制器 -->
+    <bean id="addressController" 
+    class="com.infolion.platform.basicApp.authManage.web.AddressController" 
+    parent="baseMultiActionController"></bean>
+    <!-- 代码生成 -->
+    <bean id="codeGenerateController"
+    class="com.infolion.platform.codeGenerator.web.CodeGenerateController"
+    parent="baseMultiActionController" />
+    <!-- UI编辑器 -->
+    <bean id="UIEditorController"
+    class="com.infolion.platform.codeGenerator.web.UIEditorController"
+    parent="baseMultiActionController" />
+   	<!--锁定列表控制器-->
+	<bean id="lockListController"
+		class="com.infolion.platform.dpframework.uicomponent.lock.web.LockListController"
+		parent="baseMultiActionController" />
+   	<!--在线用户控制器-->
+	<bean id="sessionLogController"
+		class="com.infolion.platform.basicApp.sysConsole.userOnline.web.SessionLogController"
+		parent="baseMultiActionController" />
+   	<!--在线用户登录控制器-->
+	<bean id="onlineUserController"
+		class="com.infolion.platform.basicApp.sysConsole.userOnline.web.SessionLogController"
+		parent="baseMultiActionController" />
+	<!--缓存管理控制器-->
+	<bean id="cacheManageController"
+		class="com.infolion.platform.basicApp.sysConsole.cacheManage.web.CacheManageController"
+		parent="baseMultiActionController" />
+	<!--数据传输控制器-->
+	<bean id="dataTransferController"
+		class="com.infolion.platform.dpframework.dataTransfers.web.DataTransferController"
+		parent="baseMultiActionController" />
+	<!--实施配置-职位-->
+	<bean id="positionController"
+		class="com.infolion.platform.basicApp.authManage.web.PositionController"
+		parent="baseMultiActionController" />
+	<!--实施配置-职务-->
+	<bean id="postController"
+		class="com.infolion.platform.basicApp.authManage.web.PostController"
+		parent="baseMultiActionController" />
+
+</beans>
