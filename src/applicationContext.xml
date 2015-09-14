@@ -56,10 +56,29 @@
  	</bean>
  	
 	<!-- Dao的实现 -->
-	<bean class="com.hy.wxserver.web.dao.BaseDao">  
+<!-- 	<bean id="baseDao" class="com.hy.wxserver.web.dao.BaseDao">   -->
+<!-- 		<property name="hibernateTemplate" ref="hibernateTemplate" /> -->
+<!-- 	</bean> -->
+	
+	<bean id="messageDao" class="com.hy.wxserver.web.dao.MessageDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="reqMessageDao" class="com.hy.wxserver.web.dao.ReqMessageDAO">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
+	<bean id="serviceMenuDao" class="com.hy.wxserver.web.dao.ServiceMenuDAO">
 		<property name="hibernateTemplate" ref="hibernateTemplate" />
 	</bean>
 	
+	<bean id="customerService" class="com.hy.wxserver.web.service.CustomerService">
+		<property name="messageDao" ref="messageDao"></property>
+		<property name="reqMessageDao" ref="reqMessageDao"></property>
+		<property name="serviceMenuDao" ref="serviceMenuDao"></property>
+	</bean>
+	
+	<bean id="dispatcherController" class="com.hy.wxserver.web.controller.DispatcherController">
+		<property name="customerService" ref="customerService"></property>
+	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	<tx:annotation-driven mode="aspectj"/>
   

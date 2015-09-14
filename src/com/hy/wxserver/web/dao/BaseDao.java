@@ -10,8 +10,7 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
-
-import com.hy.wxserver.web.pojo.Message;
+import org.springframework.stereotype.Repository;
 
 /**
  * 修改人： Heshaohua
@@ -19,7 +18,6 @@ import com.hy.wxserver.web.pojo.Message;
  * 修改内容：新增 
  * 类说明：
  */
-
 public class BaseDao<T extends Object> extends HibernateDaoSupport{
 
 	private static final Logger log = LoggerFactory.getLogger(BaseDao.class);

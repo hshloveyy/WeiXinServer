@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.hy.wxserver.web.pojo.Message;
@@ -26,7 +25,6 @@ public class MessageDAO extends HibernateDaoSupport implements IMessageDao {
 	public static final String MSG_TYPE = "msgType";
 	public static final String MSG_BODY = "msgBody";
 	
-
 	/* (non-Javadoc)
 	 * @see com.hy.wxserver.web.dao.IMessageDao#save(com.hy.wxserver.web.pojo.Message)
 	 */

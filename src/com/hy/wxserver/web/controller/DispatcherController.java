@@ -30,7 +30,6 @@ public class DispatcherController {
 	
 	private Log log = LogFactory.getLog(DispatcherController.class);
 	
-	@Autowired
 	private ICustomerService customerService;
 	
 	/**
@@ -92,4 +91,9 @@ public class DispatcherController {
 		out.print(respMessage.parseXML());  
         out.close(); 
 	}
+
+	public void setCustomerService(ICustomerService customerService) {
+		this.customerService = customerService;
+	}
+	
 }

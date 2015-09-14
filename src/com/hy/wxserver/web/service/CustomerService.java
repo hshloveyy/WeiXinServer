@@ -6,8 +6,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.springframework.stereotype.Service;
-
 import com.hy.wxserver.message.response.ImageMessage;
 import com.hy.wxserver.message.response.RespBaseMessage;
 import com.hy.wxserver.message.response.TextMessage;
@@ -24,13 +22,12 @@ import com.hy.wxserver.web.pojo.ServiceMenu;
  * @version 创建时间：2014-4-8 下午06:13:00
  * 类说明
  */
-@Service("customerService")
 public class CustomerService implements ICustomerService {
-	
+
 	private IMessageDao messageDao;
-	
+
 	private IReqMessageDao reqMessageDao;
-	
+
 	private IServiceMenuDao serviceMenuDao;
 
 
@@ -140,24 +137,12 @@ public class CustomerService implements ICustomerService {
     	return message;
 	}
 	
-	public IMessageDao getMessageDao() {
-		return messageDao;
-	}
-
 	public void setMessageDao(IMessageDao messageDao) {
 		this.messageDao = messageDao;
 	}
 
-	public IReqMessageDao getReqMessageDao() {
-		return reqMessageDao;
-	}
-
 	public void setReqMessageDao(IReqMessageDao reqMessageDao) {
 		this.reqMessageDao = reqMessageDao;
-	}
-
-	public IServiceMenuDao getServiceMenuDao() {
-		return serviceMenuDao;
 	}
 
 	public void setServiceMenuDao(IServiceMenuDao serviceMenuDao) {
