@@ -96,7 +96,7 @@
  </tx:advice>
  
  <aop:config>
-  <aop:pointcut id="myPointcut" expression="execution(* com.mvc.footprints.service.*.*(..))" />
+  <aop:pointcut id="myPointcut" expression="execution(* com.hy.wxserver.web.service.*.*(..))" />
   <aop:advisor advice-ref="txAdvice" pointcut-ref="myPointcut"/>
  </aop:config> 
     
