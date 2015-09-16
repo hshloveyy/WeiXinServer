@@ -16,6 +16,7 @@ import com.hy.wxserver.web.dao.IMessageDao;
 import com.hy.wxserver.web.dao.IPInfoDao;
 import com.hy.wxserver.web.dao.IReqMessageDao;
 import com.hy.wxserver.web.dao.IServiceMenuDao;
+import com.hy.wxserver.web.pojo.IpInfo;
 import com.hy.wxserver.web.pojo.ReqMessage;
 import com.hy.wxserver.web.pojo.ServiceMenu;
 
@@ -79,7 +80,12 @@ public class CustomerService implements ICustomerService {
 				}
 				if(message == null){
 					if(CharacterUtils.isIpAddress(content)){
-						textMessage.setContent("你输入的是IP地址！");
+						String resultString = "";
+						List<IpInfo> list = ipInfoDao.findByIP(content);
+						if(list != null && list.size() > 0){
+							resultString = list.get(0).toString();
+						}
+						textMessage.setContent(resultString);
 					}else{
 						textMessage.setContent("你输入的是文本消息！");
 					}

@@ -80,8 +80,13 @@
 		<property name="ipInfoDao" ref="ipInfoDao"></property>
 	</bean>
 	
+	<bean id="ipService" class="com.hy.wxserver.web.service.IpServiceImpl">
+		<property name="ipInfoDao" ref="ipInfoDao"></property>
+	</bean>
+	
 	<bean id="dispatcherController" class="com.hy.wxserver.web.controller.DispatcherController">
 		<property name="customerService" ref="customerService"></property>
+		<property name="ipService" ref="ipService"></property>
 	</bean>
 	<tx:annotation-driven transaction-manager="transactionManager" />
 	<tx:annotation-driven mode="aspectj"/>

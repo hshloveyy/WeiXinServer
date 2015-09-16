@@ -6,8 +6,8 @@
 -->
 <hibernate-mapping>
     <class name="com.hy.wxserver.web.pojo.IpInfo" table="ipdb" catalog="wxdb">
-        <id name="msgId" type="java.lang.Integer">
-            <column name="MsgId" />
+        <id name="id" type="java.lang.Integer">
+            <column name="id" />
             <generator class="assigned" />
         </id>
         <property name="ipStart" type="java.lang.String">

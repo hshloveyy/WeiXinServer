@@ -72,5 +72,15 @@ public class IpInfo {
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append(region);
+		builder.append(" ");
+		builder.append(comments);
+		return builder.toString();
+	}
+	
 	
 }

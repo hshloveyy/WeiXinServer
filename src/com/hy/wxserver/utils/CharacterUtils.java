@@ -19,7 +19,7 @@ public class CharacterUtils {
 
 	public static boolean isIpAddress(String ipAddress){
 		Pattern pattern = Pattern.compile("^(\\d{1,2}|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d{1,2}|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d{1,2}|1\\d\\d|2[0-4]\\d|25[0-5])\\.(\\d{1,2}|1\\d\\d|2[0-4]\\d|25[0-5])$");
-		Matcher matcher = pattern.matcher("255.255.255.256");
+		Matcher matcher = pattern.matcher(ipAddress);
 		boolean b = matcher.matches();
 		return b;
 	}

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.hy.wxserver.message.response.RespBaseMessage;
 import com.hy.wxserver.utils.SignUtils;
 import com.hy.wxserver.web.service.ICustomerService;
+import com.hy.wxserver.web.service.IpService;
 
 /**
  * 核心请求分发控制器
@@ -32,6 +33,7 @@ public class DispatcherController {
 	
 	private ICustomerService customerService;
 	
+	private IpService ipService;
 	/**
 	 * 
 	 *@author heshaohua
@@ -91,9 +93,19 @@ public class DispatcherController {
 		out.print(respMessage.parseXML());  
         out.close(); 
 	}
+	
+	@ResponseBody
+	@RequestMapping("ip")
+	public String test(String ip){
+		return ipService.getDataFromIp(ip);
+	}
 
 	public void setCustomerService(ICustomerService customerService) {
 		this.customerService = customerService;
+	}
+
+	public void setIpService(IpService ipService) {
+		this.ipService = ipService;
 	}
 	
 }
