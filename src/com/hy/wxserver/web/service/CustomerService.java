@@ -10,8 +10,10 @@ import com.hy.wxserver.message.response.ImageMessage;
 import com.hy.wxserver.message.response.RespBaseMessage;
 import com.hy.wxserver.message.response.TextMessage;
 import com.hy.wxserver.message.response.model.Image;
+import com.hy.wxserver.utils.CharacterUtils;
 import com.hy.wxserver.utils.MessageUtils;
 import com.hy.wxserver.web.dao.IMessageDao;
+import com.hy.wxserver.web.dao.IPInfoDao;
 import com.hy.wxserver.web.dao.IReqMessageDao;
 import com.hy.wxserver.web.dao.IServiceMenuDao;
 import com.hy.wxserver.web.pojo.ReqMessage;
@@ -29,7 +31,8 @@ public class CustomerService implements ICustomerService {
 	private IReqMessageDao reqMessageDao;
 
 	private IServiceMenuDao serviceMenuDao;
-
+	
+	private IPInfoDao ipInfoDao;
 
 	public RespBaseMessage processRequest(HttpServletRequest request) {
 		RespBaseMessage message = null;
@@ -75,7 +78,11 @@ public class CustomerService implements ICustomerService {
 					}
 				}
 				if(message == null){
-					textMessage.setContent("你输入的是文本消息！");
+					if(CharacterUtils.isIpAddress(content)){
+						textMessage.setContent("你输入的是IP地址！");
+					}else{
+						textMessage.setContent("你输入的是文本消息！");
+					}
 					message = textMessage;
 				}
 				
@@ -147,6 +154,10 @@ public class CustomerService implements ICustomerService {
 
 	public void setServiceMenuDao(IServiceMenuDao serviceMenuDao) {
 		this.serviceMenuDao = serviceMenuDao;
+	}
+
+	public void setIpInfoDao(IPInfoDao ipInfoDao) {
+		this.ipInfoDao = ipInfoDao;
 	}
 
 }

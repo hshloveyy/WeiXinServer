@@ -69,11 +69,15 @@
 	<bean id="serviceMenuDao" class="com.hy.wxserver.web.dao.ServiceMenuDAO">
 		<property name="hibernateTemplate" ref="hibernateTemplate" />
 	</bean>
+	<bean id="ipInfoDao" class="com.hy.wxserver.web.dao.IPInfoDao">
+		<property name="hibernateTemplate" ref="hibernateTemplate" />
+	</bean>
 	
 	<bean id="customerService" class="com.hy.wxserver.web.service.CustomerService">
 		<property name="messageDao" ref="messageDao"></property>
 		<property name="reqMessageDao" ref="reqMessageDao"></property>
 		<property name="serviceMenuDao" ref="serviceMenuDao"></property>
+		<property name="ipInfoDao" ref="ipInfoDao"></property>
 	</bean>
 	
 	<bean id="dispatcherController" class="com.hy.wxserver.web.controller.DispatcherController">
