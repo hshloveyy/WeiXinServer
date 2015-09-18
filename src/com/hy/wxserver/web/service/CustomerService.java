@@ -84,6 +84,8 @@ public class CustomerService implements ICustomerService {
 						List<IpInfo> list = ipInfoDao.findByIP(content);
 						if(list != null && list.size() > 0){
 							resultString = list.get(0).toString();
+						}else {
+							resultString = "你输入的IP地址为内网IP";
 						}
 						textMessage.setContent(resultString);
 					}else{
