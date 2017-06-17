@@ -1,39 +1,17 @@
 {
+    "is_menu_open": 1,
+    "selfmenu_info": {
         "button": [
             {
-                "type": "click", 
-                "name": "ΩÒ»’ Æ’≈Õº", 
-                "key": "V1001_TODAY_PIC", 
-                "sub_button": [ ]
-            }, 
+                "type": "view",
+                "name": "ÊúÄÊñ∞Ê∂àÊÅØ",
+                "url": "http://mp.weixin.qq.com/s?__biz=MzA4MDQ3MzcyMg==&mid=2451766884&idx=1&sn=363c2bd16a4324630536f9f4325c212c&chksm=8875e571bf026c67d90d5afa7566e44f07434f84a3c538a83cd2fcdbaffbe89559483a7a63ff&scene=18#wechat_redirect"
+            },
             {
-                "type": "click", 
-                "name": "TOP10∏Ë«˙", 
-                "key": "V1001_TODAY_MUSIC", 
-                "sub_button": [ ]
-            }, 
-            {
-                "name": "≤Àµ•", 
-                "sub_button": [
-                    {
-                        "type": "view", 
-                        "name": "QQø’º‰", 
-                        "url": "http://user.qzone.qq.com/386184368/", 
-                        "sub_button": [ ]
-                    }, 
-                    {
-                        "type": "view", 
-                        "name": "Œ“µƒŒ¢≤©", 
-                        "url": "http://t.qq.com/heshaohua159632", 
-                        "sub_button": [ ]
-                    }, 
-                    {
-                        "type": "click", 
-                        "name": "‘ﬁ“ªœ¬Œ“√«", 
-                        "key": "V1001_GOOD", 
-                        "sub_button": [ ]
-                    }
-                ]
+                "type": "view",
+                "name": "È¢ÜÂèñÁ¶èÂà©",
+                "url": "http://mp.weixin.qq.com/s?__biz=MzA4MDQ3MzcyMg==&mid=2451766879&idx=4&sn=253cfee0573ff0c5ea42d21d24acd7ec&chksm=8875e54abf026c5c50e5612a88673ff2e16a73e8857af08042f7b4708498eb7a7499a95fbc7d&scene=18#wechat_redirect"
             }
         ]
     }
+}

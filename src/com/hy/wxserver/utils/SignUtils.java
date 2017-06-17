@@ -12,7 +12,9 @@ import java.util.Arrays;
  */  
 public class SignUtils {  
     // 与接口配置信息中的Token要一致  
-    private static String token = "hshloveyy";  
+    private static final String token = "hshloveyy";  
+    
+    private static final String AppSecret = "7e992e4f3101efeada09f4a6c3ac1bea";
   
     /** 
      * 验证签名 

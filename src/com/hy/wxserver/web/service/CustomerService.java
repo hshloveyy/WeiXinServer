@@ -6,6 +6,9 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
+import com.hy.turing.util.TuringUtils;
 import com.hy.wxserver.message.response.ImageMessage;
 import com.hy.wxserver.message.response.RespBaseMessage;
 import com.hy.wxserver.message.response.TextMessage;
@@ -70,27 +73,33 @@ public class CustomerService implements ICustomerService {
 				reqMessage.setContent(content);
 				
 				//响应用户
-				List<ServiceMenu> serviceList = serviceMenuDao.findAll();
-		    	for (ServiceMenu serviceMenu : serviceList) {
-					if(serviceMenu.getCode().equalsIgnoreCase(content)){
-						textMessage.setContent(serviceMenu.getCodeDesc());
-						
-						message = textMessage;
+//				List<ServiceMenu> serviceList = serviceMenuDao.findAll();
+//		    	for (ServiceMenu serviceMenu : serviceList) {
+//					if(serviceMenu.getCode().equalsIgnoreCase(content)){
+//						textMessage.setContent(serviceMenu.getCodeDesc());
+//						
+//						message = textMessage;
+//					}
+//				}
+				
+				//优先判断是否为ip地址
+				if(CharacterUtils.isIpAddress(content)){
+					String resultString = "";
+					List<IpInfo> list = ipInfoDao.findByIP(content);
+					if(list != null && list.size() > 0){
+						resultString = list.get(0).toString();
+					}else {
+						resultString = "你输入的IP地址为内网IP";
 					}
+					textMessage.setContent(resultString);
+					message = textMessage;
 				}
+				
+				//调用图灵机器人接口
 				if(message == null){
-					if(CharacterUtils.isIpAddress(content)){
-						String resultString = "";
-						List<IpInfo> list = ipInfoDao.findByIP(content);
-						if(list != null && list.size() > 0){
-							resultString = list.get(0).toString();
-						}else {
-							resultString = "你输入的IP地址为内网IP";
-						}
-						textMessage.setContent(resultString);
-					}else{
-						textMessage.setContent("你输入的是文本消息！");
-					}
+					String resultString = TuringUtils.askToTuring(content, fromUserName);
+					JSONObject jsonObject = JSON.parseObject(resultString);
+					textMessage.setContent(jsonObject.getString("text") + jsonObject.getString("url"));
 					message = textMessage;
 				}
 				
