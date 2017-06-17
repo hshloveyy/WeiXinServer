@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.hy.turing.util.TuringUtils;
 import com.hy.wxserver.message.response.ImageMessage;
@@ -99,7 +100,20 @@ public class CustomerService implements ICustomerService {
 				if(message == null){
 					String resultString = TuringUtils.askToTuring(content, fromUserName);
 					JSONObject jsonObject = JSON.parseObject(resultString);
-					textMessage.setContent(jsonObject.getString("text") + jsonObject.getString("url"));
+					StringBuffer sb = new StringBuffer();
+					if(jsonObject.containsKey("url")){
+						sb.append(jsonObject.getString("text")).append("\n").append((jsonObject.getString("url") != null ? "<a href='" + jsonObject.getString("url") + "'>点我查看</a>" : ""));
+					}else{
+						sb.append(jsonObject.getString("text"));
+					}
+					if(jsonObject.containsKey("list")){
+						JSONArray array = jsonObject.getJSONArray("list");
+						for (int i = 0; i < 10; i++) {
+							JSONObject detail = array.getJSONObject(i);
+							sb.append("<a href='").append(detail.getString("detailurl")).append("'>").append(i+1).append(".").append(detail.getString("name")).append("</a>\n");
+						}
+					}
+					textMessage.setContent(sb.toString());
 					message = textMessage;
 				}
 				
@@ -125,7 +139,25 @@ public class CustomerService implements ICustomerService {
 				textMessage.setContent("您发送的是链接消息！");
 				message = textMessage;
 			}else if (msgType.equals(MessageUtils.REQ_MESSAGE_TYPE_VOICE)) { // 音频消息
-				textMessage.setContent("您发送的是音频消息！");
+				String content = requestMap.get("Recognition");
+				reqMessage.setContent(content);
+				
+				String resultString = TuringUtils.askToTuring(content, fromUserName);
+				JSONObject jsonObject = JSON.parseObject(resultString);
+				StringBuffer sb = new StringBuffer();
+				if(jsonObject.containsKey("url")){
+					sb.append(jsonObject.getString("text")).append("\n").append((jsonObject.getString("url") != null ? "<a href='" + jsonObject.getString("url") + "'>点我查看</a>" : ""));
+				}else{
+					sb.append(jsonObject.getString("text"));
+				}
+				if(jsonObject.containsKey("list")){
+					JSONArray array = jsonObject.getJSONArray("list");
+					for (int i = 0; i < 10; i++) {
+						JSONObject detail = array.getJSONObject(i);
+						sb.append("<a href='").append(detail.getString("detailurl")).append("'>").append(i+1).append(".").append(detail.getString("name")).append("</a>\n");
+					}
+				}
+				textMessage.setContent(sb.toString());
 				message = textMessage;
 			}else if(msgType.equals(MessageUtils.REQ_MESSAGE_TYPE_VIDEO)){	//视频消息
 				textMessage.setContent("您发送的是视频消息！");

@@ -21,7 +21,7 @@ public class TuringUtils {
 	private final static String apiKey = "2abf8ec29a0f462db089ba3371bc8989";
 
 	public static void main(String[] args) {
-		System.out.println(TuringUtils.askToTuring("", "15084929682"));
+		System.out.println(TuringUtils.askToTuring("电影", "15084929682"));
 	}
 	
 	public static String askToTuring(String info, String userId) {
