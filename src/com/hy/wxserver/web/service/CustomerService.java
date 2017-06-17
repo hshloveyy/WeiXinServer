@@ -107,6 +107,7 @@ public class CustomerService implements ICustomerService {
 						sb.append(jsonObject.getString("text"));
 					}
 					if(jsonObject.containsKey("list")){
+						sb.append("\n");
 						JSONArray array = jsonObject.getJSONArray("list");
 						for (int i = 0; i < 10; i++) {
 							JSONObject detail = array.getJSONObject(i);
@@ -151,6 +152,7 @@ public class CustomerService implements ICustomerService {
 					sb.append(jsonObject.getString("text"));
 				}
 				if(jsonObject.containsKey("list")){
+					sb.append("\n");
 					JSONArray array = jsonObject.getJSONArray("list");
 					for (int i = 0; i < 10; i++) {
 						JSONObject detail = array.getJSONObject(i);
